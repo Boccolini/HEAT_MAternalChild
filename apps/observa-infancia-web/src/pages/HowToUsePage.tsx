@@ -19,7 +19,8 @@ export function HowToUsePage() {
           <p>2. Move to perinatal, child mortality, maternal, climate, and context pages to inspect domain-specific distributions.</p>
           <p>3. Use the relationships page to examine paired exposure-outcome patterns under the selected filters.</p>
           <p>4. Use the outcome matrix page to understand which signals remained principal, supportive, provisional, or outside the final retained set.</p>
-          <p>5. Use the methods page whenever you need to verify indicator construction, lineage, version baseline, or display rules.</p>
+          <p>5. Use the methods page whenever you need to verify indicator construction, lineage, release boundary, citation metadata, or display rules.</p>
+          <p>6. Use the version ledger page to check the current frozen baseline and any future versioned updates.</p>
         </div>
       </section>
 

@@ -51,6 +51,12 @@ export function TopNav({ pages }: TopNavProps) {
       >
         32 outcomes matrix
       </Link>
+      <Link
+        to="/version-ledger"
+        className="rounded-full border border-rule bg-white px-4 py-2 text-sm font-medium text-navy transition-colors hover:border-blue hover:text-blue"
+      >
+        Version ledger
+      </Link>
     </nav>
   );
 }

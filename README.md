@@ -1,30 +1,37 @@
 # HEAT Maternal Child
 
-This repository was restarted from zero and rebuilt as a reproducible scaffold for a Brazilian heat and maternal, neonatal, and child health pipeline. The current baseline follows the operating prompt provided in `codex_gold_ready_pipeline_prompt.docx`, but adapts it to the reality of an empty repository: the project now has the execution framework, contracts, manifests, run logging, and gold-readiness bookkeeping needed to rebuild the pipeline safely.
+This repository contains the reproducibility-facing codebase for the Brazil 2020-2024 heat and maternal, newborn, and child health study. The active scope is the executable analytical pipeline from source inventory and promotion contracts through the official `step0-step7` flow, plus the dashboard application that exposes the frozen study outputs.
 
-## What is implemented now
+## Repository scope
 
-- Local-first repository structure with strict `raw -> bronze -> silver -> gold` boundaries.
-- Python package and CLI for preflight checks, inventory, manifest generation, contract validation, run logging, and outcome status notes.
-- Externalized configuration and rules under `config/`.
-- Initial gold schema contracts under `schemas/`.
-- Configuration files stored as JSON-compatible YAML, so the scaffold runs with only the Python standard library.
-- Documentation for operating phases, rollback rules, and current blockers.
-- Automated unit tests for the scaffolded operational tooling.
+This repository is intentionally code-first.
 
-## Current limitation
+- It includes executable code, configs, schemas, tests, and the dashboard application.
+- It excludes editorial working files, report drafts, large artifacts, and non-essential local outputs.
+- Its purpose is reproducibility, operational traceability, and frozen-release governance.
 
-The dataset-specific ingestion and promotion scripts referenced by the DOCX prompt do not exist in this fresh restart. No raw data snapshots are present either. Because of that, endpoint production is currently blocked upstream, and the repository records that state explicitly instead of fabricating outputs.
+## What is implemented
 
-## Official analytical flow
+- Strict `raw -> bronze -> silver -> gold` pipeline boundaries in code and config.
+- A Python package and CLI for preflight checks, inventory, manifest generation, schema validation, run logging, and official analytical steps.
+- The official analytical flow from `step-0-freeze` through `step-7-escalation-round`.
+- A dashboard application with a frozen baseline, release metadata, citation-aware downloads, and an internal 32-outcome progression matrix.
+- Automated tests for the active operational tooling and analytical orchestration.
 
-The official analytical flow is now `steps-only`.
+## Official analytical boundary
+
+The executable analysis pipeline is `steps-only`.
 
 - Supported analytical commands are `step-0-freeze` through `step-7-escalation-round` and `steps-run --through step7`.
-- `track_a` and `track_b` are retained on disk only as archived historical code and are not part of the official CLI, test suite, or execution path.
-- Shared internal marts for the official flow are materialized under `artifacts/analysis/shared_marts`.
-- Official analytical tests live under `tests/`; archived legacy tests live under `archive/legacy_tests/` and are intentionally excluded from the active suite.
-- `step8` and `step9` are reserved for post-analytic editorial closure and next-cycle planning under `reports/publications/incremental_analysis_round/`; they are not CLI commands and do not extend the executable analysis pipeline.
+- `step8` and `step9` are not executable analytical commands in this repository.
+- Legacy `track_a` and `track_b` are not part of the active workflow, public interface, or expected execution path.
+
+## Current limitations
+
+- No raw data are distributed in this repository.
+- No promoted bronze, silver, or gold datasets are distributed in this repository.
+- Reproducing final results still depends on the governed source data environment and the frozen analytical inputs created outside the public Git payload.
+- Dashboard DOI archival is still pending; current downloads carry citation metadata and a placeholder DOI status.
 
 ## Quick start
 
@@ -52,7 +59,7 @@ PYTHONPATH=src .venv/bin/python -m heat_mnch.cli step-7-escalation-round
 PYTHONPATH=src .venv/bin/python -m heat_mnch.cli steps-run --through step7
 ```
 
-## Core commands
+## Core operational commands
 
 ```bash
 PYTHONPATH=src python3 scripts/heat_mnch.py preflight
@@ -66,23 +73,19 @@ PYTHONPATH=src python3 scripts/heat_mnch.py init-status-note
 ## Repository layout
 
 ```text
-artifacts/
+apps/
 config/
-data/
-docs/
-reports/
-references/
 schemas/
 scripts/
 src/
 tests/
 ```
 
-## Operating references
+## Dashboard release baseline
 
-- [docs/OPERATING_PLAYBOOK.md](docs/OPERATING_PLAYBOOK.md)
-- [docs/GEOGRAPHIC_CONTRACT.md](docs/GEOGRAPHIC_CONTRACT.md)
-- [docs/LIMITATIONS.md](docs/LIMITATIONS.md)
-- [docs/DEPLOY_MAC_MINI_CLOUDFLARE.md](docs/DEPLOY_MAC_MINI_CLOUDFLARE.md)
-- [reports/README.md](reports/README.md)
-- [references/README.md](references/README.md)
+The dashboard is currently frozen at `freeze-2026-03-29`.
+
+- A frozen baseline banner is shown in the application shell.
+- Generated dashboard downloads append the suggested citation:
+  `Boccolini, CS. Brazil's heat exposure on maternal, newborn, and child health - Dashboard.`
+- The exact DOI will be attached after archival of the frozen dashboard release.

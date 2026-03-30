@@ -7,6 +7,7 @@ import { ClimateHealthRelationshipsPage } from "./pages/ClimateHealthRelationshi
 import { HowToUsePage } from "./pages/HowToUsePage";
 import { MethodsPage } from "./pages/MethodsPage";
 import { OutcomeMatrixPage } from "./pages/OutcomeMatrixPage";
+import { VersionLedgerPage } from "./pages/VersionLedgerPage";
 
 function App() {
   const { data, error, isLoading } = useQuery({ queryKey: ["metrics-meta"], queryFn: getMetricsMeta });
@@ -36,6 +37,7 @@ function App() {
         <Route path="relationships" element={<ClimateHealthRelationshipsPage />} />
         <Route path="how-to-use" element={<HowToUsePage />} />
         <Route path="outcome-matrix" element={<OutcomeMatrixPage />} />
+        <Route path="version-ledger" element={<VersionLedgerPage />} />
         <Route path="methods" element={<MethodsPage />} />
       </Route>
     </Routes>

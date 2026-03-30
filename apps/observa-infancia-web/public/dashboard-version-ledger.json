@@ -1,0 +1,20 @@
+{
+  "version_rule": {
+    "major": "Larger analytical, structural, or release-scope changes open a new major version.",
+    "minor": "Small wording, interface, or maintenance changes increment a decimal point within the current major line."
+  },
+  "entries": [
+    {
+      "version": "v1_2026_03_29",
+      "date": "2026-03-29",
+      "change_type": "major",
+      "summary": "Frozen baseline established for the public dashboard release.",
+      "details": [
+        "Release boundary fixed for the dashboard baseline.",
+        "Internal 32-outcome progression matrix published inside the app.",
+        "Citation metadata appended to generated downloads.",
+        "Methods page updated with release boundary and DOI status."
+      ]
+    }
+  ]
+}

@@ -71,8 +71,8 @@ export function MethodsPage() {
       <section className="space-y-2">
         <h2 className="text-2xl font-semibold">Methods and Technical Specifications</h2>
         <p className="max-w-4xl text-sm text-slate-600">
-          This page documents KPI construction, contextual stratifier construction, source provenance, medallion lineage,
-          and dashboard display rules for the internal beta build.
+          This page documents indicator construction, contextual stratifier construction, source provenance, medallion
+          lineage, release boundary, and dashboard display rules for the frozen reproducibility release.
         </p>
       </section>
 
@@ -82,8 +82,9 @@ export function MethodsPage() {
         </div>
         <div className="panel-body space-y-3 text-sm text-slate-700">
           <p>The dashboard is a descriptive and surveillance-facing interface built on the frozen workflow used in the current study package.</p>
-          <p>Its role is to display retained indicators, contextual patterns, medallion lineage, and page-level exploration rules. It is not a standalone causal engine.</p>
-          <p>Principal, supportive, and provisional signals should be read according to the frozen validation hierarchy in this release baseline.</p>
+          <p>Its role is to display retained indicators, contextual patterns, medallion lineage, and page-level exploration rules. It should not be read as a standalone causal engine or as a substitute for the governed analytical pipeline.</p>
+          <p>Principal, supportive, and provisional signals should be interpreted according to the frozen validation hierarchy in this release baseline.</p>
+          <p>This release is intended for reproducibility and transparent inspection of the published dashboard surface, not for raw-data re-execution inside the web application.</p>
         </div>
       </section>
 
@@ -93,8 +94,8 @@ export function MethodsPage() {
         </div>
         <div className="panel-body space-y-3 text-sm text-slate-700">
           <p>All generated downloads should carry the dashboard citation metadata for sharing and reuse.</p>
-          <p>Suggested citation: Boccolini, CS. Brazil&apos;s heat exposure on maternal, newborn, and child health - Dashboard.</p>
-          <p>DOI status: pending release archival. The exact DOI should be attached after the frozen dashboard release is archived.</p>
+          <p>Suggested citation: Boccolini, CS. Brazil&apos;s heat exposure on maternal, newborn, and child health - Dashboard. {DASHBOARD_FROZEN_BASELINE_VERSION}. DOI pending release archival.</p>
+          <p>DOI status: pending release archival. The exact DOI should be attached after the frozen dashboard release is archived and version-locked.</p>
         </div>
       </section>
 
