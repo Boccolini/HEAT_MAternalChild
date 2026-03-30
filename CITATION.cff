@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this dashboard release, please cite it as follows."
+title: "Brazil's heat exposure on maternal, newborn, and child health - Dashboard"
+type: software
+authors:
+  - family-names: "Boccolini"
+    given-names: "Cristiano Sergio"
+    name-particle: ""
+    affiliation: "Fiocruz"
+repository-code: "https://github.com/digicodeagent-ai/HEAT_MAternalChild"
+abstract: >
+  Frozen dashboard release for Brazil's heat exposure on maternal, newborn,
+  and child health. This release supports reproducibility, transparent
+  inspection of retained indicators, and citation-aware downloads.
+keywords:
+  - heat health
+  - maternal health
+  - newborn health
+  - child health
+  - Brazil
+  - dashboard
+  - surveillance
+license: "Proprietary"
+version: "v1_2026_03_29"
+date-released: "2026-03-29"

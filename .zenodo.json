@@ -1,0 +1,22 @@
+{
+  "title": "Brazil's heat exposure on maternal, newborn, and child health - Dashboard",
+  "description": "Frozen dashboard release for Brazil's heat exposure on maternal, newborn, and child health. This archive supports reproducibility, transparent inspection of retained indicators, and citation-aware reuse.",
+  "creators": [
+    {
+      "name": "Boccolini, Cristiano Sergio",
+      "affiliation": "Fiocruz"
+    }
+  ],
+  "upload_type": "software",
+  "license": "proprietary",
+  "keywords": [
+    "heat health",
+    "maternal health",
+    "newborn health",
+    "child health",
+    "Brazil",
+    "dashboard",
+    "surveillance"
+  ],
+  "access_right": "open"
+}
