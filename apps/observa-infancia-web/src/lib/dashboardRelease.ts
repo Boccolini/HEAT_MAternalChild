@@ -5,7 +5,7 @@ export const DASHBOARD_FROZEN_BASELINE_NOTE =
 export const DASHBOARD_CITATION_AUTHOR = "Boccolini, CS";
 export const DASHBOARD_CITATION_TITLE =
   "Brazil's heat exposure on maternal, newborn, and child health - Dashboard";
-export const DASHBOARD_DOI = "DOI pending release archival";
+export const DASHBOARD_DOI = "10.5281/zenodo.19325763";
 export const DASHBOARD_SUGGESTED_CITATION = `${DASHBOARD_CITATION_AUTHOR}. ${DASHBOARD_CITATION_TITLE}. ${DASHBOARD_FROZEN_BASELINE_VERSION}. ${DASHBOARD_DOI}.`;
 export const DASHBOARD_VERSION_LEDGER = [
   {

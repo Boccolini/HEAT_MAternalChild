@@ -94,8 +94,8 @@ export function MethodsPage() {
         </div>
         <div className="panel-body space-y-3 text-sm text-slate-700">
           <p>All generated downloads should carry the dashboard citation metadata for sharing and reuse.</p>
-          <p>Suggested citation: Boccolini, CS. Brazil&apos;s heat exposure on maternal, newborn, and child health - Dashboard. {DASHBOARD_FROZEN_BASELINE_VERSION}. DOI pending release archival.</p>
-          <p>DOI status: pending release archival. The exact DOI should be attached after the frozen dashboard release is archived and version-locked.</p>
+          <p>Suggested citation: Boccolini, CS. Brazil&apos;s heat exposure on maternal, newborn, and child health - Dashboard. {DASHBOARD_FROZEN_BASELINE_VERSION}. 10.5281/zenodo.19325763.</p>
+          <p>DOI status: archived. Version-specific DOI: 10.5281/zenodo.19325763. Concept DOI for the latest release line: 10.5281/zenodo.19325764.</p>
         </div>
       </section>
 

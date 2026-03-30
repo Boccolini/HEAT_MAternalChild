@@ -15,16 +15,18 @@ This release archives the frozen dashboard baseline for:
 
 ## Suggested citation
 
-Boccolini, CS. *Brazil's heat exposure on maternal, newborn, and child health - Dashboard*. v1_2026_03_29. DOI to be attached after Zenodo archival.
+Boccolini, CS. *Brazil's heat exposure on maternal, newborn, and child health - Dashboard*. v1_2026_03_29. https://doi.org/10.5281/zenodo.19325763.
 
 ## Repository
 
 - GitHub repository: https://github.com/digicodeagent-ai/HEAT_MAternalChild
 - Frozen dashboard baseline date: 2026-03-29
-- Commit at release preparation: 0bb04ad
+- Commit at release preparation: 7a1d321
+- Version-specific DOI: https://doi.org/10.5281/zenodo.19325763
+- Concept DOI: https://doi.org/10.5281/zenodo.19325764
 
 ## Notes
 
 - This release is intended for reproducibility and transparent inspection of the published dashboard surface.
 - The repository does not distribute raw data or promoted bronze, silver, or gold datasets.
-- The exact DOI should be inserted into the dashboard metadata after Zenodo archival completes.
+- The Zenodo record is now archived and can be cited using the version-specific DOI above.

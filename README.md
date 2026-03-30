@@ -88,4 +88,6 @@ The dashboard is currently frozen at `freeze-2026-03-29`.
 - A frozen baseline banner is shown in the application shell.
 - Generated dashboard downloads append the suggested citation:
   `Boccolini, CS. Brazil's heat exposure on maternal, newborn, and child health - Dashboard.`
-- The exact DOI will be attached after archival of the frozen dashboard release.
+- Version-specific DOI for the frozen dashboard release: `10.5281/zenodo.19325763`
+- Concept DOI for the latest dashboard release line: `10.5281/zenodo.19325764`
+- Zenodo badge: [![DOI](https://zenodo.org/badge/1191742385.svg)](https://doi.org/10.5281/zenodo.19325763)
