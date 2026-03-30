@@ -1,0 +1,113 @@
+{
+  "step7_spec": {
+    "step_name": "step7_escalation_round",
+    "allowed_missing_headline_groups": [
+      "maternal"
+    ],
+    "priority_required_analysis_units": [
+      "preterm_birth_count",
+      "stillbirth_primary_gte28_count",
+      "neonatal_death_count"
+    ],
+    "optional_escalated_analysis_units": [
+      "very_preterm_birth_count",
+      "low_birth_weight_lt2500_count",
+      "stillbirth_sensitivity_gte22_count",
+      "gestational_days_lost_below_37_weeks"
+    ],
+    "publication_files": {
+      "14_step7_escalation_scope.md": "# Step 7 Escalation Scope\n\nDocument the escalation scope and route classes here.\n",
+      "15_step7_headline_group_surface.md": "# Step 7 Headline-Group Surface\n\nDocument the headline-group surface here.\n",
+      "16_step7_all_candidate_surface.md": "# Step 7 All-Candidate Surface\n\nDocument the complete candidate surface here.\n"
+    },
+    "output_workbook_tabs": [
+      "HeadlineGroups",
+      "AllCandidates",
+      "EventLevel",
+      "InheritedAggregated",
+      "MaternalRelativeOnly",
+      "TemporalControls"
+    ],
+    "perinatal_live_birth_specs": {
+      "preterm_birth_count": {
+        "outcome_column": "preterm_birth_flag",
+        "model_kind": "count",
+        "data_source": "silver_sinasc_event",
+        "primary_temporal_controls": "calendar_year,delivery_month,conception_month",
+        "fallback_hierarchy": [
+          "municipality_code|calendar_year|delivery_month|conception_month",
+          "municipality_code|calendar_year|delivery_month",
+          "state_code|calendar_year|delivery_month"
+        ]
+      },
+      "very_preterm_birth_count": {
+        "outcome_column": "very_preterm_birth_flag",
+        "model_kind": "count",
+        "data_source": "silver_sinasc_event",
+        "primary_temporal_controls": "calendar_year,delivery_month,conception_month",
+        "fallback_hierarchy": [
+          "municipality_code|calendar_year|delivery_month|conception_month",
+          "municipality_code|calendar_year|delivery_month",
+          "state_code|calendar_year|delivery_month"
+        ]
+      },
+      "low_birth_weight_lt2500_count": {
+        "outcome_column": "low_birth_weight_lt2500_flag",
+        "model_kind": "count",
+        "data_source": "silver_sinasc_event",
+        "primary_temporal_controls": "calendar_year,delivery_month,conception_month",
+        "fallback_hierarchy": [
+          "municipality_code|calendar_year|delivery_month|conception_month",
+          "municipality_code|calendar_year|delivery_month",
+          "state_code|calendar_year|delivery_month"
+        ]
+      },
+      "gestational_days_lost_below_37_weeks": {
+        "outcome_column": "gestational_days_lost_below_37_weeks",
+        "model_kind": "severity",
+        "data_source": "silver_sinasc_event",
+        "primary_temporal_controls": "calendar_year,delivery_month,conception_month",
+        "fallback_hierarchy": [
+          "municipality_code|calendar_year|delivery_month|conception_month",
+          "municipality_code|calendar_year|delivery_month",
+          "state_code|calendar_year|delivery_month"
+        ]
+      }
+    },
+    "stillbirth_specs": {
+      "stillbirth_primary_gte28_count": {
+        "outcome_column": "stillbirth_primary_gte28_flag",
+        "minimum_gestational_age_weeks": 28,
+        "model_kind": "count",
+        "data_source": "silver_stillbirth_individual",
+        "primary_temporal_controls": "calendar_year,event_month",
+        "fallback_hierarchy": [
+          "municipality_code|calendar_year|event_month|gestational_age_source",
+          "municipality_code|calendar_year|event_month",
+          "municipality_code|calendar_year"
+        ]
+      },
+      "stillbirth_sensitivity_gte22_count": {
+        "outcome_column": "stillbirth_sensitivity_gte22_flag",
+        "minimum_gestational_age_weeks": 22,
+        "model_kind": "count",
+        "data_source": "silver_stillbirth_individual",
+        "primary_temporal_controls": "calendar_year,event_month",
+        "fallback_hierarchy": [
+          "municipality_code|calendar_year|event_month|gestational_age_source",
+          "municipality_code|calendar_year|event_month",
+          "municipality_code|calendar_year"
+        ]
+      }
+    },
+    "neonatal_specs": {
+      "neonatal_death_count": {
+        "outcome_column": "DEATHS_NEONATAL",
+        "denominator_column": "LIVE_BIRTHS_TOTAL_ANNUAL",
+        "data_source": "gold_mnch_mortality",
+        "primary_temporal_controls": "calendar_year,calendar_month,day_of_week",
+        "robustness_temporal_controls": "calendar_year,epidemiologic_week"
+      }
+    }
+  }
+}

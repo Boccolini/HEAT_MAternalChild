@@ -1,0 +1,7 @@
+{
+  "burden_spec": {
+    "counterfactual": "municipality_specific_minimum_risk_temperature",
+    "state_publication_minimum_events": 100,
+    "roll_up_to_macroregion_when_unstable": true
+  }
+}

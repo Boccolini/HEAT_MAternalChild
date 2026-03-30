@@ -1,0 +1,4 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+export function DisplayRulesPanel({ rules }) {
+    return (_jsxs("section", { className: "panel", children: [_jsx("div", { className: "panel-header", children: _jsx("h3", { className: "text-base font-semibold", children: "Display and quality rules" }) }), _jsx("div", { className: "panel-body grid gap-4 md:grid-cols-2 xl:grid-cols-4", children: rules.map((rule) => (_jsxs("div", { className: "rounded-2xl border border-rule p-4", children: [_jsx("div", { className: "text-xs uppercase tracking-wide text-slate-500", children: rule.title }), _jsx("p", { className: "mt-3 text-sm text-slate-700", children: rule.description }), _jsxs("p", { className: "mt-3 text-[11px] text-slate-500", children: ["Technical reference: ", _jsx("span", { className: "font-mono", children: rule.rule_id })] })] }, rule.rule_id))) })] }));
+}

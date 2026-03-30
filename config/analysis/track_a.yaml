@@ -1,0 +1,70 @@
+{
+  "analysis_id": "track_a_framework_validation",
+  "analysis_title": "Track A Framework Validation",
+  "years": [2020, 2021, 2022, 2023, 2024],
+  "naming_policy": {
+    "public_language": "academic_english",
+    "public_variable_style": "lower_snake_case",
+    "allow_canonical_non_english_in_provenance_metadata_only": true
+  },
+  "frozen_inputs": {
+    "gold_release_report_path": "gold_release_candidate_report.md",
+    "endpoint_readiness_ledger_path": "endpoint_readiness_ledger.csv",
+    "gold_manifest_package_dir": "gold_release_candidate_manifests"
+  },
+  "outcome_families": [
+    "acute_daily",
+    "perinatal_delivery_window_aggregate",
+    "maternal_operational",
+    "child_mortality",
+    "panel_proxy"
+  ],
+  "exposure_families": [
+    {
+      "id": "family_1_tmax_primary",
+      "public_name": "Maximum daily temperature",
+      "variables": ["maximum_daily_temperature_c"]
+    },
+    {
+      "id": "family_2_tmax_plus_humidity",
+      "public_name": "Maximum daily temperature with relative humidity",
+      "variables": ["maximum_daily_temperature_c", "mean_daily_relative_humidity_pct"]
+    },
+    {
+      "id": "family_3_heatwave_duration",
+      "public_name": "Heatwave duration sensitivity",
+      "variables": ["heatwave_duration_days_p95_threshold"]
+    },
+    {
+      "id": "family_4_heat_index_sensitivity",
+      "public_name": "Approximate heat index sensitivity",
+      "variables": ["approximate_heat_index_c"]
+    }
+  ],
+  "lag_definitions": {
+    "acute_daily": ["lag0", "lag0_1", "lag0_3", "lag0_7"],
+    "delivery_aligned_windows": ["days_0_6_before_event", "days_0_13_before_event", "days_0_27_before_event"],
+    "deferred_windows_for_track_b": [
+      "third_trimester",
+      "whole_pregnancy",
+      "week_of_gestation_distributed_lag"
+    ]
+  },
+  "review_gates": [
+    {"stage_id": "stage0_scaffold_and_semantic_layer", "review_required": true},
+    {"stage_id": "stage1_analytical_freeze_and_readiness_gate", "review_required": true},
+    {"stage_id": "stage2_analysis_marts", "review_required": true},
+    {"stage_id": "stage3_descriptive_atlas", "review_required": true},
+    {"stage_id": "stage4_screening_and_statistical_triage", "review_required": true},
+    {"stage_id": "stage5_dag_package_and_adjustment_architecture", "review_required": true},
+    {"stage_id": "stage6_progressive_benchmark_modeling", "review_required": true},
+    {"stage_id": "stage7_sensitivity_heterogeneity_and_vulnerability", "review_required": true},
+    {"stage_id": "stage8_framework_synthesis_and_indicator_scorecard", "review_required": true},
+    {"stage_id": "stage9_manuscript_and_supplement_package", "review_required": true}
+  ],
+  "output_roots": {
+    "artifacts_root": "artifacts/track_a",
+    "metadata_root": "artifacts/track_a/metadata",
+    "publication_root": "reports/publications/track_a_framework_validation"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "flagship_protocol": {
+    "journal_target": "The Lancet Planetary Health",
+    "flagship_question": "Do heat and humidity over biologically meaningful gestational windows and acute short-term lags increase preterm birth, stillbirth, and neonatal mortality in Brazil, and do these risks generate measurable burden and unequal impacts across vulnerable municipal contexts?",
+    "co_primary_outcomes": [
+      "PRETERM_FLAG",
+      "STILLBIRTH_PRIMARY_GTE28_FLAG",
+      "DEATHS_NEONATAL"
+    ],
+    "supporting_secondary_outcomes": [
+      "VERY_PRETERM_FLAG",
+      "GEST_DAYS_LOST_BELOW_37W",
+      "HDP_ANY",
+      "HDP_SEVERE",
+      "STILLBIRTH_SENS_GTE22_FLAG"
+    ],
+    "primary_exposure_family": "TMAX_C",
+    "secondary_exposure_families": [
+      "TMAX_C_x_RH_MEAN_PCT",
+      "HEATWAVE_LEN_P95",
+      "HEAT_INDEX_APPROX_C"
+    ],
+    "primary_main_text_estimates": {
+      "PRETERM_FLAG": "third_trimester_mean_tmax_c",
+      "STILLBIRTH_PRIMARY_GTE28_FLAG": "days_0_6_before_event_mean_tmax_c",
+      "DEATHS_NEONATAL": "lag0_1_mean_tmax_c"
+    },
+    "main_text_table_count": 4,
+    "main_text_figure_count": 4
+  }
+}

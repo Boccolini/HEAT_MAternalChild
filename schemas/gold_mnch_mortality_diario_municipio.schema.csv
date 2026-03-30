@@ -1,0 +1,88 @@
+column_name,data_type,required,description
+MUNICIPALITY_CODE,string,true,Resolved IBGE municipality code eligible for municipality-level analysis; UF-only unresolved placeholders ending in 0000 are excluded from analytical gold.
+DATE,date,true,Observation date in ISO format.
+YEAR,integer,true,Calendar year derived from DATE.
+MONTH,integer,true,Calendar month derived from DATE.
+DEATHS_NEONATAL,integer,true,Daily neonatal deaths from canonical child mortality silver.
+DEATHS_U1,integer,true,Daily infant deaths from canonical child mortality silver.
+DEATHS_U5,integer,true,Daily under-five deaths from canonical child mortality silver.
+NEONATAL_DEATHS_TOTAL,integer,true,Compatibility alias for daily neonatal deaths.
+INFANT_DEATHS_TOTAL,integer,true,Compatibility alias for daily infant deaths.
+UNDER5_DEATHS_TOTAL,integer,true,Compatibility alias for daily under-five deaths.
+POSTNEONATAL_DEATHS_TOTAL,integer,true,Daily post-neonatal deaths from canonical child mortality silver.
+LIVE_BIRTHS_TOTAL_ANNUAL,float,false,Annual live-birth denominator for neonatal and infant mortality.
+POP_U5,float,false,Annual under-five population denominator.
+LIVE_BIRTHS_TOTAL,float,false,Compatibility alias for annual live births.
+UNDER5_POPULATION,float,false,Compatibility alias for annual under-five population.
+DENOMINATOR_USED,string,true,Outcome-specific denominator note for the wide mortality gold table.
+OFFSET_VALUE,float,false,Generic offset placeholder left null for wide outcome-specific mortality output.
+OFFSET_LOG_LIVE_BIRTHS,float,false,Log offset for annual live births when valid.
+OFFSET_LOG_UNDER5_POPULATION,float,false,Log offset for annual under-five population when valid.
+NEONATAL_MORTALITY_RATE_PER_1000_LIVE_BIRTHS,float,false,Daily neonatal mortality rate using annual live births.
+INFANT_MORTALITY_RATE_PER_1000_LIVE_BIRTHS,float,false,Daily infant mortality rate using annual live births.
+UNDER5_MORTALITY_RATE_PER_100000_UNDER5_POPULATION,float,false,Daily under-five mortality rate using annual under-five population.
+CRUDE_RATE_NEONATAL,float,false,Compatibility alias for neonatal mortality rate.
+CRUDE_RATE_U1,float,false,Compatibility alias for infant mortality rate.
+CRUDE_RATE_U5,float,false,Compatibility alias for under-five mortality rate.
+ACUTE_CARE_PROXY_TOTAL,integer,false,Optional SIH-based acute-care utilization proxy.
+ACUTE_CARE_PROXY_LABEL,string,false,Label documenting whether the optional SIH acute-care proxy was materialized.
+PRINCIPAL_DIAGNOSIS_CHILD_DEHYDRATION_PRIMARY_TOTAL,integer,false,Under-five SIH admissions with dehydration in principal diagnosis.
+PRINCIPAL_DIAGNOSIS_CHILD_DIARRHEA_GI_PRIMARY_TOTAL,integer,false,Under-five SIH admissions with diarrheal or gastrointestinal disease in principal diagnosis.
+PRINCIPAL_DIAGNOSIS_CHILD_RESPIRATORY_ACUTE_PRIMARY_TOTAL,integer,false,Under-five SIH admissions with acute respiratory disease in principal diagnosis.
+ANY_DIAGNOSIS_CHILD_ASTHMA_WHEEZE_SENSITIVITY_TOTAL,integer,false,Under-five SIH admissions with asthma or wheeze in any diagnosis field.
+TMAX_C,float,false,Daily maximum temperature in Celsius.
+TMIN_C,float,false,Daily minimum temperature in Celsius.
+TMEAN_C,float,false,Daily mean temperature in Celsius.
+RH_MIN_PCT,float,false,Daily minimum relative humidity percentage.
+RH_MEAN_PCT,float,false,Daily mean relative humidity percentage.
+HEATWAVE_LEN_P95,float,false,Daily heatwave duration sensitivity exposure.
+HEAT_INDEX_APPROX_C,float,false,Composite heat-index sensitivity exposure from the final merged climate series.
+FONTE_CLIMA_FINAL,string,false,Resolved climate source or explicit no-match lineage.
+FONTE_TMAX_C_FINAL,string,false,Resolved TMAX source or explicit no-match lineage.
+FONTE_TMIN_C_FINAL,string,false,Resolved minimum-temperature source or explicit no-match lineage.
+FONTE_TMEAN_C_FINAL,string,false,Resolved mean-temperature source or explicit no-match lineage.
+FONTE_RH_MIN_PCT_FINAL,string,false,Resolved minimum-humidity source or explicit no-match lineage.
+FONTE_RH_MEAN_PCT_FINAL,string,false,Resolved humidity source or explicit no-match lineage.
+IMPUTADO_POR_FALLBACK,integer,false,Indicator that at least one climate field used fallback lineage.
+IMPUTADO_TMAX_C,integer,false,Indicator that TMAX used fallback lineage.
+IMPUTADO_TMIN_C,integer,false,Indicator that minimum temperature used fallback lineage.
+IMPUTADO_TMEAN_C,integer,false,Indicator that mean temperature used fallback lineage.
+IMPUTADO_RH_MIN_PCT,integer,false,Indicator that minimum humidity used fallback lineage.
+IMPUTADO_RH_MEAN_PCT,integer,false,Indicator that RH mean used fallback lineage.
+CLIMATE_UPSTREAM_QUARANTINE_FLAG,integer,false,Indicator that the climate lineage was protected from an invalid upstream INMET station and fell back to ERA5.
+CLIMATE_RECORD_ANOMALY_FLAG,integer,false,Indicator that the municipality-day preliminary climate tuple was nullified by the anomaly screen before imputation.
+CLIMATE_CORRECTION_PATH,string,false,Compact provenance label for the applied climate correction path.
+HEAT_INDEX_METHOD,string,false,Method label for approximate heat index.
+HEAT_INDEX_SOURCE_PAIR,string,false,Lineage pair used for approximate heat index.
+HEAT_INDEX_INPUTS_ZERO_MISSING,integer,false,Indicator that heat-index inputs had zero missingness.
+UNDERLYING_BASIC_CAUSE_CHILD_HEAT_THERMAL_PRIMARY_TOTAL,integer,false,Under-five underlying/basic heat-thermal deaths.
+UNDERLYING_BASIC_CAUSE_CHILD_DEHYDRATION_PRIMARY_TOTAL,integer,false,Under-five underlying/basic dehydration deaths.
+ANY_MENTION_CHILD_FLUID_ELECTROLYTE_SENSITIVITY_TOTAL,integer,false,Under-five any-mention fluid and electrolyte deaths.
+UNDERLYING_BASIC_CAUSE_CHILD_DIARRHEA_GI_PRIMARY_TOTAL,integer,false,Under-five underlying/basic diarrheal deaths.
+UNDERLYING_BASIC_CAUSE_CHILD_RESPIRATORY_ACUTE_PRIMARY_TOTAL,integer,false,Under-five underlying/basic acute respiratory deaths.
+ANY_MENTION_CHILD_ASTHMA_WHEEZE_SENSITIVITY_TOTAL,integer,false,Under-five any-mention asthma or wheeze deaths.
+ANY_MENTION_CHILD_RENAL_ACUTE_SENSITIVITY_TOTAL,integer,false,Under-five any-mention acute renal deaths.
+ANY_MENTION_CHILD_MALNUTRITION_SLOW_MOVING_SENSITIVITY_TOTAL,integer,false,Under-five any-mention malnutrition deaths.
+ANY_MENTION_EXCESSIVE_NATURAL_HEAT_X30_TOTAL,integer,false,Explicit X30 any-mention deaths.
+UNDERLYING_BASIC_CAUSE_DIRECT_HEAT_ANY_TOTAL,integer,false,Under-five direct heat deaths by underlying/basic cause.
+ANY_MENTION_DIRECT_HEAT_ANY_TOTAL,integer,false,Under-five direct heat deaths by any mention.
+UNDERLYING_BASIC_CAUSE_INDIRECT_HEAT_ANY_TOTAL,integer,false,Under-five indirect heat-sensitive deaths by underlying/basic cause.
+ANY_MENTION_INDIRECT_HEAT_ANY_TOTAL,integer,false,Under-five indirect heat-sensitive deaths by any mention.
+UNDERLYING_BASIC_CAUSE_SLOW_MOVING_HEAT_ANY_TOTAL,integer,false,Under-five slow-moving heat-sensitive deaths by underlying/basic cause.
+ANY_MENTION_SLOW_MOVING_HEAT_ANY_TOTAL,integer,false,Under-five slow-moving heat-sensitive deaths by any mention.
+SOURCE_SIM,string,true,Canonical SIM provenance marker.
+SOURCE_SIH,string,true,Optional SIH provenance marker or explicit absence note.
+SOURCE_POPULATION,string,true,Canonical population provenance marker.
+QC_STATUS,string,true,Quality-control status.
+LIVE_BIRTHS_DENOMINATOR_ZERO_FLAG,integer,false,Annual live-birth denominator equals zero.
+LIVE_BIRTHS_DENOMINATOR_MISSING_FLAG,integer,false,Annual live-birth denominator is missing.
+LIVE_BIRTHS_RATE_NOT_COMPUTABLE_FLAG,integer,false,Neonatal or infant mortality rate is not computable.
+LIVE_BIRTHS_OFFSET_VALID_FLAG,integer,false,Live-birth offset is valid and positive.
+UNDER5_POPULATION_DENOMINATOR_ZERO_FLAG,integer,false,Under-five population denominator equals zero.
+UNDER5_POPULATION_DENOMINATOR_MISSING_FLAG,integer,false,Under-five population denominator is missing.
+UNDER5_POPULATION_RATE_NOT_COMPUTABLE_FLAG,integer,false,Under-five mortality rate is not computable.
+UNDER5_POPULATION_OFFSET_VALID_FLAG,integer,false,Under-five population offset is valid and positive.
+DENOMINATOR_ZERO_FLAG,integer,false,At least one required mortality denominator equals zero.
+DENOMINATOR_MISSING_FLAG,integer,false,At least one required mortality denominator is missing.
+RATE_NOT_COMPUTABLE_FLAG,integer,false,At least one mortality rate cannot be computed from its annual denominator.
+OFFSET_VALID_FLAG,integer,false,All mortality offsets required by the wide output are valid and positive.

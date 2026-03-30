@@ -1,0 +1,158 @@
+{
+  "analysis_id": "heat_mnch_incremental_round",
+  "analysis_title": "HEAT-MNCH Incremental Analysis Round",
+  "strategy": "neutral_plus_alias",
+  "years": [2020, 2021, 2022, 2023, 2024],
+  "frozen_inputs": {
+    "gold_release_report_path": "gold_release_candidate_report.md",
+    "gold_release_report_fallback_path": "artifacts/status/gold_release_candidate_report.md",
+    "endpoint_readiness_ledger_path": "endpoint_readiness_ledger.csv",
+    "stage5_dictionary_matrix_path": "gold_stage5_dictionary_matrix.csv",
+    "gold_manifest_package_dir": "gold_release_candidate_manifests"
+  },
+  "outcome_inventory_path": "config/analysis/outcome_inventory.yaml",
+  "analysis_variable_aliases_path": "config/analysis/analysis_variable_aliases.yaml",
+  "seasonality_contract_path": "config/analysis/seasonality_contract.yaml",
+  "escalation_protocol_path": "config/analysis/escalation_protocol.yaml",
+  "step2_backlog_review_analysis_units": [
+    "prenatal_eight_plus_visit_count",
+    "low_birth_weight_lt2500_count",
+    "preterm_low_birth_weight_count",
+    "postneonatal_death_count",
+    "child_death_age_one_to_four_count",
+    "child_under_five_death_total_count",
+    "severe_hypertensive_disorder_of_pregnancy_count",
+    "antepartum_haemorrhage_admission_count",
+    "child_direct_heat_underlying_death_count",
+    "child_indirect_heat_underlying_death_count",
+    "child_excessive_natural_heat_x30_any_mention_death_count",
+    "child_direct_heat_any_mention_death_count",
+    "child_indirect_heat_any_mention_death_count",
+    "child_direct_heat_hospitalization_count",
+    "child_indirect_heat_hospitalization_count",
+    "child_excessive_natural_heat_x30_hospitalization_count"
+  ],
+  "output_roots": {
+    "artifacts_root": "artifacts/analysis/step0",
+    "publication_root": "reports/publications/incremental_analysis_round"
+  },
+  "protected_contracts": {
+    "dashboard_manifest_path": "artifacts/dashboard/v1/manifest.json",
+    "statcalc_registry_module_path": "src/heat_mnch/statcalc_api/registry.py",
+    "statcalc_runner_module_path": "src/heat_mnch/statcalc_api/runner.py"
+  },
+  "supersession_entries": [
+    {
+      "legacy_surface": "cli",
+      "legacy_id": "track-a-build-semantic-layer",
+      "replacement_surface": "cli",
+      "replacement_id": "step-0-freeze",
+      "compatibility_mode": "archived_disabled_reference",
+      "sunset_after_step": "step2"
+    },
+    {
+      "legacy_surface": "cli",
+      "legacy_id": "track-a-freeze",
+      "replacement_surface": "cli",
+      "replacement_id": "step-0-freeze",
+      "compatibility_mode": "archived_disabled_reference",
+      "sunset_after_step": "step2"
+    },
+    {
+      "legacy_surface": "cli",
+      "legacy_id": "track-b-editorial-freeze",
+      "replacement_surface": "cli",
+      "replacement_id": "step-0-freeze",
+      "compatibility_mode": "archived_disabled_reference",
+      "sunset_after_step": "step2"
+    },
+    {
+      "legacy_surface": "cli",
+      "legacy_id": "track-a-run --through-stage stage0",
+      "replacement_surface": "cli",
+      "replacement_id": "steps-run --through step0",
+      "compatibility_mode": "archived_disabled_reference",
+      "sunset_after_step": "step2"
+    },
+    {
+      "legacy_surface": "cli",
+      "legacy_id": "track-b-run --through-stage b0",
+      "replacement_surface": "cli",
+      "replacement_id": "steps-run --through step0",
+      "compatibility_mode": "archived_disabled_reference",
+      "sunset_after_step": "step2"
+    },
+    {
+      "legacy_surface": "config_path",
+      "legacy_id": "config/analysis/track_a.yaml",
+      "replacement_surface": "config_path",
+      "replacement_id": "config/analysis/round_config.yaml",
+      "compatibility_mode": "archived_disabled_reference",
+      "sunset_after_step": "step2"
+    },
+    {
+      "legacy_surface": "config_path",
+      "legacy_id": "config/analysis/framework_outcome_map.yaml",
+      "replacement_surface": "config_path",
+      "replacement_id": "config/analysis/outcome_inventory.yaml",
+      "compatibility_mode": "archived_disabled_reference",
+      "sunset_after_step": "step2"
+    },
+    {
+      "legacy_surface": "config_path",
+      "legacy_id": "config/analysis/track_a_variable_aliases.yaml",
+      "replacement_surface": "config_path",
+      "replacement_id": "config/analysis/analysis_variable_aliases.yaml",
+      "compatibility_mode": "archived_disabled_reference",
+      "sunset_after_step": "step2"
+    },
+    {
+      "legacy_surface": "config_path",
+      "legacy_id": "config/analysis/track_b_editorial_freeze.yaml",
+      "replacement_surface": "config_path",
+      "replacement_id": "config/analysis/escalation_protocol.yaml",
+      "compatibility_mode": "archived_disabled_reference",
+      "sunset_after_step": "step2"
+    },
+    {
+      "legacy_surface": "publication_root",
+      "legacy_id": "reports/publications/track_a_framework_validation",
+      "replacement_surface": "publication_root",
+      "replacement_id": "reports/publications/incremental_analysis_round",
+      "compatibility_mode": "archived_disabled_reference",
+      "sunset_after_step": "step2"
+    },
+    {
+      "legacy_surface": "publication_root",
+      "legacy_id": "reports/publications/track_b_lanplh_flagship_perinatal",
+      "replacement_surface": "publication_root",
+      "replacement_id": "reports/publications/incremental_analysis_round",
+      "compatibility_mode": "archived_disabled_reference",
+      "sunset_after_step": "step2"
+    },
+    {
+      "legacy_surface": "artifact_root",
+      "legacy_id": "artifacts/track_a/metadata",
+      "replacement_surface": "artifact_root",
+      "replacement_id": "artifacts/analysis/step0",
+      "compatibility_mode": "archived_disabled_reference",
+      "sunset_after_step": "step2"
+    },
+    {
+      "legacy_surface": "artifact_root",
+      "legacy_id": "artifacts/track_a/freeze",
+      "replacement_surface": "artifact_root",
+      "replacement_id": "artifacts/analysis/step0",
+      "compatibility_mode": "archived_disabled_reference",
+      "sunset_after_step": "step2"
+    },
+    {
+      "legacy_surface": "artifact_root",
+      "legacy_id": "artifacts/track_b/editorial_freeze",
+      "replacement_surface": "artifact_root",
+      "replacement_id": "artifacts/analysis/step0",
+      "compatibility_mode": "archived_disabled_reference",
+      "sunset_after_step": "step2"
+    }
+  ]
+}

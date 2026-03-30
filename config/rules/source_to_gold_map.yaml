@@ -1,0 +1,83 @@
+{
+  "domains": {
+    "climate": {
+      "raw_source": "INMET raw files; ERA5-Land raw files",
+      "bronze_scripts": [
+        "scripts/promote_inmet_to_bronze_csv.py",
+        "scripts/promote_era5_land_to_bronze_csv.py"
+      ],
+      "silver_scripts": [
+        "scripts/promote_inmet_to_silver_csv.py",
+        "scripts/promote_era5_land_to_silver_csv.py"
+      ],
+      "gold_targets": [
+        "gold_mnch_panel",
+        "gold_mnch_mortality",
+        "gold_mnch_perinatal"
+      ],
+      "critical_validation": "Expected municipality-day coverage; exact contract match; TMAX_C and RH_MEAN_PCT present; fallback provenance retained."
+    },
+    "sinasc_live_births": {
+      "raw_source": "data/raw/sinasc or re-extracted via scripts/extract_raw.py",
+      "bronze_scripts": ["scripts/promote_sinasc_to_bronze_csv.py"],
+      "silver_scripts": [
+        "scripts/promote_sinasc_to_silver_csv.py",
+        "scripts/promote_sinasc_nv_evento_to_silver_csv.py",
+        "scripts/recover_sinasc_nv_evento_from_bronze.py"
+      ],
+      "gold_targets": ["gold_mnch_perinatal", "gold_mnch_mortality"],
+      "critical_validation": "Primary preterm pathway must be canonical silver_sinasc_nv_evento rather than legacy daily fallback."
+    },
+    "sim_mortality": {
+      "raw_source": "data/raw/sim or re-extracted via scripts/extract_raw.py",
+      "bronze_scripts": ["scripts/promote_sim_to_bronze_csv.py"],
+      "silver_scripts": [
+        "scripts/promote_sim_to_silver_individual_csv.py",
+        "scripts/promote_sim_to_silver_csv.py"
+      ],
+      "gold_targets": ["gold_mnch_mortality", "gold_mnch_panel"],
+      "critical_validation": "Daily counts, age strata, and municipality-date keys must reconcile and match the mortality contract."
+    },
+    "sih_admissions": {
+      "raw_source": "data/raw/sih or re-extracted via scripts/extract_sih_microdatasus.py",
+      "bronze_scripts": ["scripts/promote_sih_to_bronze_csv.py"],
+      "silver_scripts": [
+        "scripts/promote_sih_to_silver_individual_csv.py",
+        "scripts/promote_sih_to_silver_csv.py"
+      ],
+      "gold_targets": [
+        "gold_mnch_perinatal",
+        "gold_mnch_mortality",
+        "gold_mnch_panel"
+      ],
+      "critical_validation": "Refined maternal phenotypes must survive promotion without collapsing back to broad legacy groups."
+    },
+    "stillbirth": {
+      "raw_source": "FRAMEWORK_VALIDATION/data/raw/stillbirth or the Datasus transfer portal",
+      "bronze_scripts": ["scripts/promote_stillbirth_to_bronze_csv.py"],
+      "silver_scripts": [
+        "scripts/promote_stillbirth_to_silver_individual_csv.py",
+        "scripts/promote_stillbirth_to_silver_csv.py"
+      ],
+      "gold_targets": ["gold_mnch_perinatal"],
+      "critical_validation": "Primary definition must be >=28 weeks; sensitivity definition must be >=22 weeks; denominator must remain live births + stillbirths under the same cutoff."
+    },
+    "population_denominators": {
+      "raw_source": "IBGE raw inputs for women of reproductive age and under-5 population",
+      "bronze_scripts": [
+        "scripts/promote_pop_under5_to_bronze_csv.py",
+        "scripts/promote_pop_women_fertile_to_bronze_csv.py"
+      ],
+      "silver_scripts": [
+        "scripts/promote_pop_under5_to_silver_csv.py",
+        "scripts/promote_ibge_women_fertile_to_silver_csv.py"
+      ],
+      "gold_targets": [
+        "gold_mnch_perinatal",
+        "gold_mnch_mortality",
+        "gold_mnch_panel"
+      ],
+      "critical_validation": "Population denominators must be complete, exact at municipality-year level, and non-missing in gold outputs."
+    }
+  }
+}

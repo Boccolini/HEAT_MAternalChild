@@ -1,0 +1,143 @@
+{
+  "variables": [
+    {
+      "context_variable": "idh_quintile",
+      "label": "Municipal Human Development Index quintile",
+      "source_field": "IDH_EXPANDED",
+      "binning": "quintile",
+      "missing_label": "Missing context",
+      "order": ["Q1", "Q2", "Q3", "Q4", "Q5", "missing"],
+      "technical_sheet": {
+        "public_definition": "Municipal Human Development Index values expanded across the analytical period and grouped into stable national quintiles.",
+        "source_system_ids": ["atlas_brasil"],
+        "observed_source_years": [2010],
+        "expanded_years": [2020, 2021, 2022, 2023, 2024],
+        "expansion_method": "Piecewise constant expansion from the 2010 municipal reference values, preserving a separate missing category.",
+        "join_key": "municipality_code + year",
+        "component_variables": [
+          {"field": "IDH_RAW_2010", "label": "Observed municipal IDH reference value", "role": "source"},
+          {"field": "IDH_EXPANDED", "label": "Expanded municipal IDH value", "role": "expansion"},
+          {"field": "idh_quintile", "label": "Stable national quintile assignment", "role": "binning"}
+        ],
+        "binning_logic": "Stable national quintiles are defined once and applied across the full 2020-2024 panel; municipalities without source values remain in the missing category.",
+        "threshold_labels": ["Lower", "Intermediate-lower", "Average", "Intermediate-upper", "Higher", "Missing context"],
+        "caveats": [
+          "IDH is not observed annually in the dashboard period; the displayed values are expanded from the 2010 reference year.",
+          "The missing stratum must be interpreted explicitly rather than dropped from contextual comparisons."
+        ],
+        "used_on_pages": ["overview", "perinatal", "child_mortality", "maternal", "climate", "context", "relationships"]
+      }
+    },
+    {
+      "context_variable": "gini_quintile",
+      "label": "Income inequality quintile",
+      "source_field": "GINI_EXPANDED",
+      "binning": "quintile",
+      "missing_label": "Missing context",
+      "order": ["Q1", "Q2", "Q3", "Q4", "Q5", "missing"],
+      "technical_sheet": {
+        "public_definition": "Municipal Gini coefficient values expanded across the analytical period and grouped into stable national quintiles.",
+        "source_system_ids": ["atlas_brasil"],
+        "observed_source_years": [2010],
+        "expanded_years": [2020, 2021, 2022, 2023, 2024],
+        "expansion_method": "Piecewise constant expansion from the 2010 municipal Atlas Brasil reference values, preserving a separate missing category.",
+        "join_key": "municipality_code + year",
+        "component_variables": [
+          {"field": "GINI_RAW_2010", "label": "Observed municipal Gini reference value", "role": "source"},
+          {"field": "GINI_EXPANDED", "label": "Expanded municipal Gini value", "role": "expansion"},
+          {"field": "gini_quintile", "label": "Stable national quintile assignment", "role": "binning"}
+        ],
+        "binning_logic": "Stable national quintiles are derived from the expanded municipal Gini distribution and applied consistently across the dashboard years.",
+        "threshold_labels": ["Lower inequality", "Intermediate-lower", "Average", "Intermediate-upper", "Higher inequality", "Missing context"],
+        "caveats": [
+          "Gini is not observed annually in the dashboard period; the displayed values are expanded from the 2010 reference year.",
+          "Five municipalities remain in the missing stratum because no Atlas Brasil source value was available."
+        ],
+        "used_on_pages": ["overview", "perinatal", "child_mortality", "maternal", "climate", "context", "relationships"]
+      }
+    },
+    {
+      "context_variable": "urbanicity_band",
+      "label": "Urbanicity band",
+      "source_field": "PROP_URBAN",
+      "binning": "fixed",
+      "missing_label": "Missing context",
+      "order": ["low", "medium", "high", "missing"],
+      "thresholds": [0.33, 0.66],
+      "technical_sheet": {
+        "public_definition": "Municipal urban population share grouped into low, medium, and high urbanicity bands using fixed thresholds.",
+        "source_system_ids": ["ibge_population"],
+        "observed_source_years": [2022],
+        "expanded_years": [2020, 2021, 2022, 2023, 2024],
+        "expansion_method": "Observed 2022 urban-rural shares are carried across the dashboard period as a documented piecewise constant contextual characteristic.",
+        "join_key": "municipality_code + year",
+        "component_variables": [
+          {"field": "PROP_URBAN", "label": "Urban population proportion", "role": "source"},
+          {"field": "PROP_RURAL", "label": "Rural population proportion", "role": "source"},
+          {"field": "urbanicity_band", "label": "Fixed threshold band assignment", "role": "binning"}
+        ],
+        "binning_logic": "Municipalities with PROP_URBAN below 0.33 are low urbanicity, from 0.33 to below 0.66 are medium, and 0.66 or above are high urbanicity.",
+        "threshold_labels": ["Low urbanicity", "Medium urbanicity", "High urbanicity", "Missing context"],
+        "caveats": [
+          "Urban-rural structure is treated as a stable contextual characteristic and is not estimated annually.",
+          "The binning thresholds are fixed rather than quantile-based to support comparability across years."
+        ],
+        "used_on_pages": ["overview", "perinatal", "child_mortality", "maternal", "context", "relationships"]
+      }
+    },
+    {
+      "context_variable": "altitude_quartile",
+      "label": "Altitude quartile",
+      "source_field": "ALTITUDE_MEAN_M",
+      "binning": "quartile",
+      "missing_label": "Missing context",
+      "order": ["Q1", "Q2", "Q3", "Q4", "missing"],
+      "technical_sheet": {
+        "public_definition": "Mean municipal altitude grouped into stable national quartiles for contextual stratification.",
+        "source_system_ids": ["altitude_reference"],
+        "observed_source_years": ["static"],
+        "expanded_years": [2020, 2021, 2022, 2023, 2024],
+        "expansion_method": "Static municipal altitude values are joined to every municipality-year in the contextual layer.",
+        "join_key": "municipality_code + year",
+        "component_variables": [
+          {"field": "ALTITUDE_MEAN_M", "label": "Mean municipal altitude in metres", "role": "source"},
+          {"field": "altitude_quartile", "label": "Stable national quartile assignment", "role": "binning"}
+        ],
+        "binning_logic": "Stable national quartiles are computed from the municipal altitude distribution and applied consistently across years.",
+        "threshold_labels": ["Lower altitude", "Intermediate-lower", "Intermediate-upper", "Higher altitude", "Missing context"],
+        "caveats": [
+          "Altitude is treated as a static municipal characteristic.",
+          "The current dashboard uses a published SRTM-derived municipal summary rather than a rerun of the original terrain pipeline."
+        ],
+        "used_on_pages": ["overview", "perinatal", "child_mortality", "maternal", "climate", "context", "relationships"]
+      }
+    },
+    {
+      "context_variable": "coastal_flag",
+      "label": "Coastal status",
+      "source_field": "COASTAL_FLAG",
+      "binning": "binary",
+      "missing_label": "Missing context",
+      "order": ["non_coastal", "coastal", "missing"],
+      "technical_sheet": {
+        "public_definition": "Binary contextual classification indicating whether a municipality belongs to the official coastal recut used in the analytical layer.",
+        "source_system_ids": ["coastal_reference", "ibge_geography"],
+        "observed_source_years": ["static"],
+        "expanded_years": [2020, 2021, 2022, 2023, 2024],
+        "expansion_method": "Static municipal coastal status is joined to every municipality-year in the contextual layer.",
+        "join_key": "municipality_code + year",
+        "component_variables": [
+          {"field": "COASTAL_FLAG", "label": "Binary coastal classification", "role": "source"},
+          {"field": "coastal_flag", "label": "Dashboard binary stratum", "role": "binning"}
+        ],
+        "binning_logic": "Municipalities are classified as coastal or non-coastal according to the selected official recut; missing is retained only when linkage fails.",
+        "threshold_labels": ["Non-coastal", "Coastal", "Missing context"],
+        "caveats": [
+          "Coastal status is static and should be interpreted as a structural municipal attribute.",
+          "Comparisons against altitude or urbanicity should be interpreted as contextual heterogeneity, not causal effect modification."
+        ],
+        "used_on_pages": ["overview", "perinatal", "child_mortality", "maternal", "climate", "context", "relationships"]
+      }
+    }
+  ]
+}

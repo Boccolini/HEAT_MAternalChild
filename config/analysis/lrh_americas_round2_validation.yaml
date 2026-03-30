@@ -1,0 +1,75 @@
+{
+  "round2_validation_spec": {
+    "analysis_id": "lrh_americas_round2_validation",
+    "analysis_title": "LRH Americas Round 2 Validation Package",
+    "phase_order": ["freeze", "phase1", "phase2", "phase3", "phase4"],
+    "parallel_acute_phases": true,
+    "freeze_inputs": {
+      "step3_signal_matrix": "artifacts/analysis/step3/step3_signal_matrix.csv",
+      "step4_lag_comparison": "artifacts/analysis/step4/step4_lag_comparison.csv",
+      "step4_promotion_decisions": "artifacts/analysis/step4/step4_promotion_decisions.csv",
+      "step5_scorecard": "artifacts/analysis/step5/step5_scorecard.csv",
+      "step6_candidate_catalog": "artifacts/analysis/step6/step6_candidate_catalog.csv",
+      "step7_candidate_catalog": "artifacts/analysis/step7/step7_candidate_catalog.csv",
+      "step7_event_level_results": "artifacts/analysis/step7/step7_event_level_results.csv",
+      "step7_temporal_controls_appendix": "artifacts/analysis/step7/step7_temporal_controls_appendix.csv",
+      "mart_inventory": "artifacts/analysis/shared_marts/analysis_mart_inventory.csv"
+    },
+    "roadmap_doc": "reports/publications/incremental_analysis_round/28_lrh_americas_future_analytic_round_roadmap.md",
+    "tier_defaults": {
+      "tier1": [
+        "preterm_birth_count",
+        "under_five_death_count",
+        "child_dehydration_admission_count"
+      ],
+      "tier2": [
+        "neonatal_death_count",
+        "infant_death_count",
+        "child_death_age_one_to_four_count",
+        "child_diarrhea_gi_admission_count",
+        "very_preterm_birth_count",
+        "low_birth_weight_lt2500_count"
+      ],
+      "exclude_all_other_outcomes_by_default": true
+    },
+    "manuscript_roles": {
+      "tier1": "principal",
+      "tier2": "supportive"
+    },
+    "phase1": {
+      "derivation_years": [2020, 2021, 2022, 2023],
+      "validation_years": [2024],
+      "magnitude_ratio_min": 0.5,
+      "magnitude_ratio_max": 1.5
+    },
+    "phase2": {
+      "acute_outcomes": [
+        "under_five_death_count",
+        "child_dehydration_admission_count",
+        "child_diarrhea_gi_admission_count",
+        "neonatal_death_count",
+        "infant_death_count"
+      ],
+      "required_r_packages": ["dlnm", "fixest"],
+      "lag_max_default": 7,
+      "lag_max_extended": 21,
+      "extended_lag_allowed_outcomes": [
+        "neonatal_death_count",
+        "infant_death_count"
+      ],
+      "reference_quantile": 0.5,
+      "hot_quantile": 0.95
+    },
+    "phase3": {
+      "acute_outcomes": [
+        "under_five_death_count",
+        "child_dehydration_admission_count",
+        "child_diarrhea_gi_admission_count",
+        "neonatal_death_count",
+        "infant_death_count",
+        "child_death_age_one_to_four_count"
+      ],
+      "required_r_packages": ["fixest"]
+    }
+  }
+}

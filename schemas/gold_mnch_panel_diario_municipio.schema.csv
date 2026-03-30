@@ -1,0 +1,74 @@
+column_name,data_type,required,description
+MUNICIPALITY_CODE,string,true,Resolved IBGE municipality code eligible for municipality-level analysis; UF-only unresolved placeholders ending in 0000 are excluded from analytical gold.
+DATE,date,true,Observation date in ISO format.
+YEAR,integer,true,Calendar year derived from DATE.
+MONTH,integer,true,Calendar month derived from DATE.
+PRETERM_BIRTHS_CANONICAL_TOTAL,integer,false,Daily canonical preterm live births inherited from gold perinatal.
+STILLBIRTH_TOTAL_PRIMARY_GTE28,integer,false,Daily primary stillbirth total at 28 or more weeks.
+LOW_BIRTH_WEIGHT_LT2500_TOTAL,integer,false,Daily live births weighing less than 2500 grams inherited from canonical perinatal gold.
+PRETERM_LOW_BIRTH_WEIGHT_TOTAL,integer,false,Daily preterm live births weighing less than 2500 grams inherited from canonical perinatal gold.
+PRENATAL_VISITS_8PLUS_FLAG,integer,false,Daily births with eight or more prenatal visits inherited from canonical perinatal gold.
+DEATHS_NEONATAL,integer,false,Daily neonatal deaths.
+DEATHS_U1,integer,false,Daily infant deaths under 1 year.
+DEATHS_U5,integer,false,Daily deaths under age five.
+OBSTETRIC_ADMISSIONS_TOTAL,integer,false,Daily obstetric admissions from canonical perinatal gold.
+HDP_ANY_TOTAL,integer,false,Daily hypertensive disorder admissions from canonical perinatal gold.
+HDP_SEVERE_TOTAL,integer,false,Daily severe hypertensive disorder admissions from canonical perinatal gold.
+PRETERM_LABOR_TOTAL,integer,false,Daily preterm labor admissions from canonical perinatal gold.
+APH_ANTEPARTUM_TOTAL,integer,false,Daily antepartum haemorrhage admissions from canonical perinatal gold.
+GDM_GESTATIONAL_TOTAL,integer,false,Daily gestational diabetes admissions from canonical perinatal gold.
+ACUTE_CARE_PROXY_TOTAL,integer,false,Daily child acute-care proxy carried from canonical mortality gold.
+ACUTE_CARE_PROXY_LABEL,string,false,Explicit label documenting the acute-care proxy semantics.
+PRINCIPAL_DIAGNOSIS_CHILD_DEHYDRATION_PRIMARY_TOTAL,integer,false,Daily under-five SIH admissions with dehydration in principal diagnosis carried from canonical mortality gold.
+PRINCIPAL_DIAGNOSIS_CHILD_DIARRHEA_GI_PRIMARY_TOTAL,integer,false,Daily under-five SIH admissions with diarrheal or gastrointestinal principal diagnosis carried from canonical mortality gold.
+PRINCIPAL_DIAGNOSIS_CHILD_RESPIRATORY_ACUTE_PRIMARY_TOTAL,integer,false,Daily under-five SIH admissions with acute respiratory principal diagnosis carried from canonical mortality gold.
+ANY_DIAGNOSIS_CHILD_ASTHMA_WHEEZE_SENSITIVITY_TOTAL,integer,false,Daily under-five SIH admissions with asthma or wheeze in any diagnosis carried from canonical mortality gold.
+REF_LIVE_BIRTHS_DAILY,float,false,Daily live-birth denominator reference for preterm summaries.
+REF_TOTAL_BIRTHS_PRIMARY_DAILY,float,false,Daily total-birth denominator reference for primary stillbirth summaries.
+REF_LIVE_BIRTHS_TOTAL_ANNUAL,float,false,Annual live-birth denominator reference for neonatal and infant mortality.
+REF_POP_U5,float,false,Annual under-5 population denominator reference for under-5 mortality.
+REF_POP_WRA_15_49,float,false,Annual women 15-49 population denominator reference for maternal acute rates.
+TMAX_C,float,false,Daily maximum temperature in Celsius.
+TMIN_C,float,false,Daily minimum temperature in Celsius.
+TMEAN_C,float,false,Daily mean temperature in Celsius.
+RH_MIN_PCT,float,false,Daily minimum relative humidity percentage.
+RH_MEAN_PCT,float,false,Daily mean relative humidity percentage.
+HEATWAVE_LEN_P95,float,false,Daily heatwave duration sensitivity exposure.
+HEAT_INDEX_APPROX_C,float,false,Approximate composite heat-index exposure from the canonical climate series.
+FONTE_CLIMA_FINAL,string,false,Resolved climate source lineage.
+FONTE_TMAX_C_FINAL,string,false,Resolved TMAX lineage.
+FONTE_TMIN_C_FINAL,string,false,Resolved minimum-temperature lineage.
+FONTE_TMEAN_C_FINAL,string,false,Resolved mean-temperature lineage.
+FONTE_RH_MIN_PCT_FINAL,string,false,Resolved minimum-humidity lineage.
+FONTE_RH_MEAN_PCT_FINAL,string,false,Resolved humidity lineage.
+IMPUTADO_POR_FALLBACK,integer,false,Flag indicating any climate fallback imputation on the row.
+IMPUTADO_TMAX_C,integer,false,Flag indicating TMAX fallback imputation on the row.
+IMPUTADO_TMIN_C,integer,false,Flag indicating minimum temperature fallback imputation on the row.
+IMPUTADO_TMEAN_C,integer,false,Flag indicating mean temperature fallback imputation on the row.
+IMPUTADO_RH_MIN_PCT,integer,false,Flag indicating minimum humidity fallback imputation on the row.
+IMPUTADO_RH_MEAN_PCT,integer,false,Flag indicating humidity fallback imputation on the row.
+CLIMATE_UPSTREAM_QUARANTINE_FLAG,integer,false,Indicator that the climate lineage was protected from an invalid upstream INMET station and fell back to ERA5.
+CLIMATE_RECORD_ANOMALY_FLAG,integer,false,Indicator that the municipality-day preliminary climate tuple was nullified by the anomaly screen before imputation.
+CLIMATE_CORRECTION_PATH,string,false,Compact provenance label for the applied climate correction path.
+HEAT_INDEX_METHOD,string,false,Method used to derive the approximate heat index.
+HEAT_INDEX_SOURCE_PAIR,string,false,Source-pair lineage used for the approximate heat index.
+HEAT_INDEX_INPUTS_ZERO_MISSING,integer,false,Flag indicating zero missing inputs for the approximate heat index.
+PANEL_ROLE_NOTE,string,true,Documentation note that canonical endpoint semantics remain in source gold tables.
+DENOMINATOR_ZERO_FLAG,integer,false,Aggregate flag indicating at least one inherited denominator equals zero.
+DENOMINATOR_MISSING_FLAG,integer,false,Aggregate flag indicating at least one inherited denominator is missing.
+RATE_NOT_COMPUTABLE_FLAG,integer,false,Aggregate flag indicating at least one inherited rate is not computable.
+OFFSET_VALID_FLAG,integer,false,Aggregate flag indicating all inherited outcome offsets are valid.
+PERINATAL_DENOMINATOR_ZERO_FLAG,integer,false,Inherited perinatal denominator-zero safety flag.
+PERINATAL_DENOMINATOR_MISSING_FLAG,integer,false,Inherited perinatal denominator-missing safety flag.
+PERINATAL_RATE_NOT_COMPUTABLE_FLAG,integer,false,Inherited perinatal rate-not-computable safety flag.
+PERINATAL_OFFSET_VALID_FLAG,integer,false,Inherited perinatal offset-valid safety flag.
+MORTALITY_DENOMINATOR_ZERO_FLAG,integer,false,Inherited mortality denominator-zero safety flag.
+MORTALITY_DENOMINATOR_MISSING_FLAG,integer,false,Inherited mortality denominator-missing safety flag.
+MORTALITY_RATE_NOT_COMPUTABLE_FLAG,integer,false,Inherited mortality rate-not-computable safety flag.
+MORTALITY_OFFSET_VALID_FLAG,integer,false,Inherited mortality offset-valid safety flag.
+WRA_15_49_DENOMINATOR_ZERO_FLAG,integer,false,Women 15-49 denominator-zero safety flag for maternal acute rates.
+WRA_15_49_DENOMINATOR_MISSING_FLAG,integer,false,Women 15-49 denominator-missing safety flag for maternal acute rates.
+WRA_15_49_RATE_NOT_COMPUTABLE_FLAG,integer,false,Women 15-49 rate-not-computable safety flag for maternal acute rates.
+WRA_15_49_OFFSET_VALID_FLAG,integer,false,Women 15-49 offset-valid safety flag for maternal acute rates.
+SOURCE_PANEL,string,true,Panel lineage marker.
+QC_STATUS,string,true,Quality-control status.

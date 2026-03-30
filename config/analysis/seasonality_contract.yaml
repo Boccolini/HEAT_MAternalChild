@@ -1,0 +1,64 @@
+{
+  "profiles": [
+    {
+      "seasonality_profile_id": "acute_daily_standard",
+      "outcome_family": "acute_daily",
+      "outcome_id_optional": null,
+      "time_anchor": "observation_date",
+      "main_controls": ["calendar_year", "calendar_month", "day_of_week"],
+      "robustness_controls": [],
+      "required_from_step": "step0",
+      "notes": "Use for acute non-neonatal daily outcomes in the five-year round."
+    },
+    {
+      "seasonality_profile_id": "neonatal_acute_with_epiweek",
+      "outcome_family": "acute_daily",
+      "outcome_id_optional": "DEATHS_NEONATAL",
+      "time_anchor": "observation_date",
+      "main_controls": ["calendar_year", "calendar_month", "day_of_week"],
+      "robustness_controls": ["epiweek"],
+      "required_from_step": "step0",
+      "notes": "Neonatal acute outcomes must keep epiweek robustness explicit."
+    },
+    {
+      "seasonality_profile_id": "maternal_daily_standard",
+      "outcome_family": "maternal_operational",
+      "outcome_id_optional": null,
+      "time_anchor": "observation_date",
+      "main_controls": ["calendar_year", "calendar_month", "day_of_week"],
+      "robustness_controls": [],
+      "required_from_step": "step0",
+      "notes": "Maternal daily outcomes keep calendar year and month; day of week remains explicit because the delivered mart is daily."
+    },
+    {
+      "seasonality_profile_id": "perinatal_delivery_aligned",
+      "outcome_family": "perinatal_delivery_window_aggregate",
+      "outcome_id_optional": null,
+      "time_anchor": "delivery_event_anchor",
+      "main_controls": ["calendar_year", "event_or_delivery_month"],
+      "robustness_controls": [],
+      "required_from_step": "step0",
+      "notes": "Use for delivery-aligned aggregate or event-window perinatal analyses."
+    },
+    {
+      "seasonality_profile_id": "perinatal_conception_aligned",
+      "outcome_family": "perinatal_delivery_window_aggregate",
+      "outcome_id_optional": null,
+      "time_anchor": "conception_anchor",
+      "main_controls": ["calendar_year", "conception_month"],
+      "robustness_controls": [],
+      "required_from_step": "step0",
+      "notes": "Use for conception-anchored or gestational-window escalation analyses."
+    },
+    {
+      "seasonality_profile_id": "descriptive_only_profile",
+      "outcome_family": "descriptive_only",
+      "outcome_id_optional": null,
+      "time_anchor": "context_dependent",
+      "main_controls": ["monthly_and_seasonal_descriptive_screen_only"],
+      "robustness_controls": [],
+      "required_from_step": "step0",
+      "notes": "No inferential promotion is allowed automatically from this profile."
+    }
+  ]
+}

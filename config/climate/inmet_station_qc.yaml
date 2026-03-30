@@ -1,0 +1,6 @@
+brazil_latitude_min: -35.0
+brazil_latitude_max: 6.0
+brazil_longitude_min: -75.0
+brazil_longitude_max: -32.0
+max_station_to_municipality_distance_km: 150.0
+manual_station_denylist: ["C891"]

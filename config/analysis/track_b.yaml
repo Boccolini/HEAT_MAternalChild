@@ -1,0 +1,14 @@
+{
+  "analysis_id": "track_b_lanplh_flagship_perinatal",
+  "analysis_title": "Track B Lancet Planetary Health Flagship Perinatal Paper",
+  "years": [2020, 2021, 2022, 2023, 2024],
+  "naming_policy": {
+    "public_language": "academic_english",
+    "public_variable_style": "lower_snake_case"
+  },
+  "output_roots": {
+    "artifacts_root": "artifacts/track_b",
+    "event_level_root": "artifacts/track_b/event_level",
+    "publication_root": "reports/publications/track_b_lanplh_flagship_perinatal"
+  }
+}

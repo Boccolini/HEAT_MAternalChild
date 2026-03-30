@@ -1,0 +1,91 @@
+{
+  "step6_spec": {
+    "step_name": "step6_absolute_burden_translation",
+    "contrast_operator_by_outcome_family": {
+      "acute_daily": "acute_p95_vs_reference",
+      "maternal_operational": "q5_vs_q1",
+      "perinatal_delivery_window_aggregate": "q5_vs_q1"
+    },
+    "publication_thresholds": {
+      "national_min_exposed_outcome_sum": 50,
+      "national_min_valid_strata": 20,
+      "macroregion_min_exposed_outcome_sum": 50,
+      "state_min_exposed_outcome_sum": 100
+    },
+    "headline_group_definitions": [
+      {"group_id": "maternal", "group_label": "Maternal"},
+      {"group_id": "perinatal_nascimento", "group_label": "Perinatal and Birth"},
+      {"group_id": "mortalidade_infantil", "group_label": "Child Mortality"},
+      {"group_id": "hospitalizacao_infantil", "group_label": "Child Hospitalization"}
+    ],
+    "secondary_reason_labels": {
+      "service_or_non_harmful_proxy": "Service use or non-harmful proxy; keep relative-only.",
+      "continuous_severity_non_event": "Continuous severity outcome; keep secondary translation only.",
+      "duplicate_or_alias": "Duplicate or alias endpoint; do not publish as headline burden.",
+      "overlap_intersection": "Overlapping intersection endpoint; do not publish as headline burden.",
+      "coding_specific_composite": "Coding-specific composite endpoint; keep secondary.",
+      "failed_public_burden_gate": "Failed one or more public burden gates."
+    },
+    "json_contract": [
+      "status",
+      "step",
+      "candidate_count",
+      "headline_group_count",
+      "headline_group_filled_count",
+      "headline_absolute_count",
+      "supplementary_absolute_count",
+      "secondary_parallel_count",
+      "outputs",
+      "gates"
+    ],
+    "output_workbook_tabs": [
+      "Headlines",
+      "Supplementary",
+      "Secondary",
+      "Exclusions",
+      "States",
+      "Macroregions",
+      "MunicipalitySupport"
+    ],
+    "exposure_variable_map": {
+      "acute_daily": {
+        "family_1_tmax_primary": {
+          "lag0": "maximum_daily_temperature_c_lag0",
+          "lag0_1": "maximum_daily_temperature_c_lag0_1_mean",
+          "lag0_3": "maximum_daily_temperature_c_lag0_3_mean",
+          "lag0_7": "maximum_daily_temperature_c_lag0_7_mean"
+        },
+        "family_4_heat_index_parallel": {
+          "lag0": "approximate_heat_index_c_lag0",
+          "lag0_1": "approximate_heat_index_c_lag0_1_mean",
+          "lag0_3": "approximate_heat_index_c_lag0_3_mean",
+          "lag0_7": "approximate_heat_index_c_lag0_7_mean"
+        }
+      },
+      "maternal_operational": {
+        "family_1_tmax_primary": {
+          "0_6": "maximum_daily_temperature_c_days_0_6_before_event_mean",
+          "0_13": "maximum_daily_temperature_c_days_0_13_before_event_mean",
+          "0_27": "maximum_daily_temperature_c_days_0_27_before_event_mean"
+        },
+        "family_4_heat_index_parallel": {
+          "0_6": "approximate_heat_index_c_days_0_6_before_event_mean",
+          "0_13": "approximate_heat_index_c_days_0_13_before_event_mean",
+          "0_27": "approximate_heat_index_c_days_0_27_before_event_mean"
+        }
+      },
+      "perinatal_delivery_window_aggregate": {
+        "family_1_tmax_primary": {
+          "0_6": "maximum_daily_temperature_c_days_0_6_before_event_mean",
+          "0_13": "maximum_daily_temperature_c_days_0_13_before_event_mean",
+          "0_27": "maximum_daily_temperature_c_days_0_27_before_event_mean"
+        },
+        "family_4_heat_index_parallel": {
+          "0_6": "approximate_heat_index_c_days_0_6_before_event_mean",
+          "0_13": "approximate_heat_index_c_days_0_13_before_event_mean",
+          "0_27": "approximate_heat_index_c_days_0_27_before_event_mean"
+        }
+      }
+    }
+  }
+}

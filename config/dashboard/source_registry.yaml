@@ -1,0 +1,194 @@
+{
+  "source_systems": [
+    {
+      "source_system_id": "sinasc",
+      "label": "Brazilian Information System on Live Births (SINASC)",
+      "short_description": "Provides live-birth records, gestational age, and prenatal care variables used in perinatal indicators.",
+      "domain": "health",
+      "raw_manifest_ids": ["raw_sinasc.manifest.json"],
+      "bronze_manifest_ids": ["bronze_sinasc.manifest.json"],
+      "silver_manifest_ids": ["silver_sinasc.manifest.json"],
+      "notes": ["Primary source for live-birth-based maternal and perinatal indicators."]
+    },
+    {
+      "source_system_id": "sim",
+      "label": "Brazilian Mortality Information System (SIM)",
+      "short_description": "Provides mortality records used to construct neonatal, infant, and under-five mortality indicators.",
+      "domain": "health",
+      "raw_manifest_ids": ["raw_sim.manifest.json"],
+      "bronze_manifest_ids": ["bronze_sim.manifest.json"],
+      "silver_manifest_ids": ["silver_sim.manifest.json"],
+      "notes": ["Primary mortality source for child health indicators."]
+    },
+    {
+      "source_system_id": "sih_sus",
+      "label": "Brazilian Hospital Information System of the Unified Health System (SIH/SUS)",
+      "short_description": "Provides hospital admission records used to define obstetric admissions and maternal morbidity indicators.",
+      "domain": "health",
+      "raw_manifest_ids": ["raw_sih.manifest.json"],
+      "bronze_manifest_ids": ["bronze_sih.manifest.json"],
+      "silver_manifest_ids": ["silver_sih.manifest.json"],
+      "notes": ["Primary operational source for maternal and obstetric admissions."]
+    },
+    {
+      "source_system_id": "stillbirth_registry",
+      "label": "Stillbirth individual registry",
+      "short_description": "Provides stillbirth event records used to construct the primary and sensitivity stillbirth indicators.",
+      "domain": "health",
+      "raw_manifest_ids": ["raw_stillbirth.manifest.json"],
+      "bronze_manifest_ids": ["bronze_stillbirth.manifest.json"],
+      "silver_manifest_ids": ["silver_stillbirth.manifest.json"],
+      "notes": ["Used specifically for stillbirth numerator construction and sensitivity definitions."]
+    },
+    {
+      "source_system_id": "ibge_population",
+      "label": "IBGE population denominators",
+      "short_description": "Provides municipal population denominators, including women-of-reproductive-age and under-five population structures.",
+      "domain": "geography",
+      "raw_manifest_ids": ["raw_population.manifest.json"],
+      "bronze_manifest_ids": ["bronze_population.manifest.json"],
+      "silver_manifest_ids": ["silver_population.manifest.json"],
+      "notes": ["Used for rate denominators and urban-rural contextual shares."]
+    },
+    {
+      "source_system_id": "ibge_geography",
+      "label": "IBGE municipal geography reference",
+      "short_description": "Provides canonical municipal identifiers, names, and geographic recuts used across the dashboard.",
+      "domain": "geography",
+      "raw_manifest_ids": [],
+      "bronze_manifest_ids": [],
+      "silver_manifest_ids": [],
+      "notes": ["Supports geography harmonization, municipality linkage, and coastal recuts."]
+    },
+    {
+      "source_system_id": "era5_land",
+      "label": "ERA5-Land climate reanalysis",
+      "short_description": "Provides daily climate exposure fields used for temperature, humidity, heat index, and heatwave metrics.",
+      "domain": "climate",
+      "raw_manifest_ids": ["raw_climate.manifest.json"],
+      "bronze_manifest_ids": ["bronze_climate.manifest.json"],
+      "silver_manifest_ids": ["silver_climate.manifest.json"],
+      "notes": ["Primary climate source in the dashboard build and merged climate lineage."]
+    },
+    {
+      "source_system_id": "atlas_brasil",
+      "label": "Atlas Brasil municipal development and inequality reference",
+      "short_description": "Provides the municipal IDH and Gini reference values later expanded across the analytical period.",
+      "domain": "context",
+      "raw_manifest_ids": [],
+      "bronze_manifest_ids": [],
+      "silver_manifest_ids": [],
+      "notes": ["Five municipalities remain without Atlas Brasil values and are retained as missing context."]
+    },
+    {
+      "source_system_id": "altitude_reference",
+      "label": "Municipal altitude reference",
+      "short_description": "Provides static municipal mean altitude values used in contextual stratification.",
+      "domain": "context",
+      "raw_manifest_ids": [],
+      "bronze_manifest_ids": [],
+      "silver_manifest_ids": [],
+      "notes": ["Current dashboard build uses a stable published SRTM-derived municipal summary."]
+    },
+    {
+      "source_system_id": "coastal_reference",
+      "label": "Municipal coastal classification reference",
+      "short_description": "Provides the binary coastal recut used to classify municipalities as coastal or non-coastal.",
+      "domain": "context",
+      "raw_manifest_ids": [],
+      "bronze_manifest_ids": [],
+      "silver_manifest_ids": [],
+      "notes": ["Applied as a static contextual attribute in the municipality-year context layer."]
+    }
+  ],
+  "medallion_layers": [
+    {
+      "layer_id": "raw",
+      "label": "Raw",
+      "description": "Source-preserving acquisitions from the original systems before standardization or harmonization.",
+      "artifact_type": "source snapshots and acquisition manifests"
+    },
+    {
+      "layer_id": "bronze",
+      "label": "Bronze",
+      "description": "Source-oriented promoted tables that preserve upstream structure while enforcing reproducible ingestion and manifest tracking.",
+      "artifact_type": "source-standardized promoted files"
+    },
+    {
+      "layer_id": "silver",
+      "label": "Silver",
+      "description": "Validated analytical entities harmonized across years and sources, ready to feed gold construction logic.",
+      "artifact_type": "canonical analytical entities"
+    },
+    {
+      "layer_id": "gold",
+      "label": "Gold",
+      "description": "Harmonized outcome, exposure, and contextual outputs used as the canonical analytical layer for the dashboard.",
+      "artifact_type": "publication-ready analytical tables"
+    },
+    {
+      "layer_id": "dashboard_mart",
+      "label": "Dashboard mart",
+      "description": "Pre-aggregated serving artifacts built from gold outputs to support reproducible dashboard queries without hitting raw gold parquet files per request.",
+      "artifact_type": "dashboard-specific marts and DuckDB serving layer"
+    }
+  ],
+  "gold_dataset_lineage": [
+    {
+      "gold_dataset_id": "gold_mnch_perinatal",
+      "source_system_ids": ["sinasc", "stillbirth_registry"],
+      "bronze_family_ids": ["bronze_sinasc", "bronze_stillbirth"],
+      "silver_entity_ids": ["silver_sinasc_event", "silver_stillbirth_individual"],
+      "gold_output": "gold_mnch_perinatal",
+      "dashboard_artifact_id": "dashboard_metrics"
+    },
+    {
+      "gold_dataset_id": "gold_mnch_mortality",
+      "source_system_ids": ["sim", "ibge_population"],
+      "bronze_family_ids": ["bronze_sim", "bronze_population"],
+      "silver_entity_ids": ["silver_sim_deaths", "silver_pop_u5"],
+      "gold_output": "gold_mnch_mortality",
+      "dashboard_artifact_id": "dashboard_metrics"
+    },
+    {
+      "gold_dataset_id": "gold_mnch_panel",
+      "source_system_ids": ["sinasc", "stillbirth_registry", "sim", "sih_sus", "ibge_population", "era5_land"],
+      "bronze_family_ids": ["bronze_sinasc", "bronze_stillbirth", "bronze_sim", "bronze_sih", "bronze_population", "bronze_climate"],
+      "silver_entity_ids": ["silver_sinasc_event", "silver_stillbirth_individual", "silver_sim_deaths", "silver_sih_admissions", "silver_population", "silver_climate_daily"],
+      "gold_output": "gold_mnch_panel",
+      "dashboard_artifact_id": "dashboard_metrics"
+    },
+    {
+      "gold_dataset_id": "gold_analysis_child_u5",
+      "source_system_ids": ["sim", "ibge_population"],
+      "bronze_family_ids": ["bronze_sim", "bronze_population"],
+      "silver_entity_ids": ["silver_sim_deaths", "silver_pop_u5"],
+      "gold_output": "gold_analysis_child_u5",
+      "dashboard_artifact_id": "dashboard_metrics"
+    },
+    {
+      "gold_dataset_id": "gold_analysis_wra_15_49",
+      "source_system_ids": ["sih_sus", "ibge_population"],
+      "bronze_family_ids": ["bronze_sih", "bronze_population"],
+      "silver_entity_ids": ["silver_sih_admissions", "silver_pop_wra_15_49"],
+      "gold_output": "gold_analysis_wra_15_49",
+      "dashboard_artifact_id": "dashboard_metrics"
+    },
+    {
+      "gold_dataset_id": "gold_analysis_wra_15_45_sens",
+      "source_system_ids": ["sih_sus", "ibge_population"],
+      "bronze_family_ids": ["bronze_sih", "bronze_population"],
+      "silver_entity_ids": ["silver_sih_admissions", "silver_pop_wra_15_45_sensitivity"],
+      "gold_output": "gold_analysis_wra_15_45_sens",
+      "dashboard_artifact_id": "dashboard_metrics"
+    },
+    {
+      "gold_dataset_id": "gold_municipality_context",
+      "source_system_ids": ["atlas_brasil", "ibge_population", "ibge_geography", "altitude_reference", "coastal_reference"],
+      "bronze_family_ids": ["bronze_population"],
+      "silver_entity_ids": ["silver_population", "silver_geography_reference"],
+      "gold_output": "gold_municipality_context",
+      "dashboard_artifact_id": "dashboard_context"
+    }
+  ]
+}

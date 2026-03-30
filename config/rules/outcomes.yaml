@@ -1,0 +1,135 @@
+{
+  "outcomes": [
+    {
+      "outcome": "preterm_birth",
+      "gold_table": "gold_mnch_perinatal",
+      "required_gold_fields": [
+        "NV_PRETERM_TOTAL",
+        "NV_REGISTRO_UTIL_IG_TOTAL",
+        "NV_REGISTRO_UTIL_DPGP_TOTAL",
+        "NV_DPGP_MEDIA_DIAS",
+        "NV_IG_CORRIGIDA_MEDIA_SEMANAS"
+      ],
+      "gold_ready_criterion": "Canonical source is silver_sinasc_nv_evento across the full series; no primary reliance on PRETERMO_TOTAL_LEGADO."
+    },
+    {
+      "outcome": "low_birth_weight_lt2500",
+      "gold_table": "gold_mnch_perinatal",
+      "required_gold_fields": [
+        "LOW_BIRTH_WEIGHT_LT2500_TOTAL",
+        "BIRTH_WEIGHT_REPORTED_TOTAL",
+        "LIVE_BIRTHS_TOTAL"
+      ],
+      "gold_ready_criterion": "Canonical source is silver_sinasc_event with positive numeric birth weight preserved through the gold perinatal daily aggregation."
+    },
+    {
+      "outcome": "preterm_low_birth_weight",
+      "gold_table": "gold_mnch_perinatal",
+      "required_gold_fields": [
+        "PRETERM_LOW_BIRTH_WEIGHT_TOTAL",
+        "LOW_BIRTH_WEIGHT_LT2500_TOTAL",
+        "PRETERM_FLAG"
+      ],
+      "gold_ready_criterion": "Intersection phenotype is computed in canonical silver_sinasc_event and reconciles exactly to the gold perinatal municipality-day total."
+    },
+    {
+      "outcome": "stillbirth",
+      "gold_table": "gold_mnch_perinatal",
+      "required_gold_fields": [
+        "STILLBIRTH_TOTAL",
+        "STILLBIRTH_TOTAL_GTE22_SENSITIVITY",
+        "NASCIMENTOS_TOTAIS_INCLUINDO_FETAIS",
+        "OFFSET_LOG_NASCIMENTOS_TOTAIS_INCLUINDO_FETAIS"
+      ],
+      "gold_ready_criterion": "Primary indicator uses >=28 weeks; denominator equals live births plus stillbirths under the same cutoff; sensitivity >=22 weeks retained separately."
+    },
+    {
+      "outcome": "neonatal_infant_under5_mortality",
+      "gold_table": "gold_mnch_mortality",
+      "required_gold_fields": [
+        "NEONATAL_DEATHS_TOTAL",
+        "INFANT_DEATHS_TOTAL",
+        "UNDER5_DEATHS_TOTAL",
+        "LIVE_BIRTHS_TOTAL",
+        "UNDER5_POPULATION"
+      ],
+      "gold_ready_criterion": "Date and municipality keys valid; population denominators non-missing; climate enrichment complete or explicitly documented."
+    },
+    {
+      "outcome": "obstetric_admissions",
+      "gold_table": "gold_mnch_perinatal",
+      "required_gold_fields": [
+        "OBSTETRIC_ADMISSIONS_TOTAL",
+        "OBSTETRIC_URGENT_TOTAL",
+        "OBSTETRIC_ICU_TOTAL"
+      ],
+      "gold_ready_criterion": "Counts available with climate linkage and stable municipality-day keys."
+    },
+    {
+      "outcome": "hypertensive_disorders_of_pregnancy",
+      "gold_table": "gold_mnch_perinatal",
+      "required_gold_fields": [
+        "HDP_ANY_TOTAL",
+        "HDP_SEVERE_TOTAL",
+        "HDP_GESTATIONAL_HTN_TOTAL",
+        "HDP_PREECLAMPSIA_TOTAL",
+        "HDP_ECLAMPSIA_TOTAL"
+      ],
+      "gold_ready_criterion": "Refined phenotype block present and preserved after promotion; severe subtypes available."
+    },
+    {
+      "outcome": "preterm_labor_admissions",
+      "gold_table": "gold_mnch_perinatal",
+      "required_gold_fields": [
+        "PRETERM_LABOR_TOTAL",
+        "PRETERM_LABOR_URGENT_TOTAL",
+        "PRETERM_LABOR_ICU_TOTAL",
+        "PRETERM_LABOR_DEATH_TOTAL"
+      ],
+      "gold_ready_criterion": "Specific threatened or preterm labor phenotype retained rather than broad obstetric noise."
+    },
+    {
+      "outcome": "antepartum_haemorrhage_admissions",
+      "gold_table": "gold_mnch_perinatal",
+      "required_gold_fields": [
+        "APH_ANTEPARTUM_TOTAL",
+        "APH_ANTEPARTUM_URGENT_TOTAL",
+        "APH_ANTEPARTUM_ICU_TOTAL",
+        "APH_ANTEPARTUM_DEATH_TOTAL"
+      ],
+      "gold_ready_criterion": "Strict principal-diagnosis APH phenotype is retained in canonical silver_sih_daily using O44.*, O45.*, and O46.* only, explicitly excluding postpartum haemorrhage."
+    },
+    {
+      "outcome": "gestational_diabetes_admissions",
+      "gold_table": "gold_mnch_perinatal",
+      "required_gold_fields": [
+        "GDM_GESTATIONAL_TOTAL",
+        "GDM_GESTATIONAL_URGENT_TOTAL",
+        "GDM_GESTATIONAL_ICU_TOTAL",
+        "GDM_GESTATIONAL_DEATH_TOTAL",
+        "DIABETES_PREGNANCY_BROAD_TOTAL"
+      ],
+      "gold_ready_criterion": "Specific gestational diabetes phenotype available; broad pregnancy-diabetes field retained only as sensitivity."
+    },
+    {
+      "outcome": "acute_care_proxy",
+      "gold_table": "gold_mnch_panel",
+      "required_gold_fields": [
+        "ACUTE_CARE_PROXY_TOTAL",
+        "ACUTE_CARE_PROXY_LABEL"
+      ],
+      "gold_ready_criterion": "Operational proxy explicitly labeled as proxy and present in the gold-ready comparison set."
+    },
+    {
+      "outcome": "child_sih_heat_sensitive_admissions",
+      "gold_table": "gold_mnch_mortality",
+      "required_gold_fields": [
+        "PRINCIPAL_DIAGNOSIS_CHILD_DEHYDRATION_PRIMARY_TOTAL",
+        "PRINCIPAL_DIAGNOSIS_CHILD_DIARRHEA_GI_PRIMARY_TOTAL",
+        "PRINCIPAL_DIAGNOSIS_CHILD_RESPIRATORY_ACUTE_PRIMARY_TOTAL",
+        "ANY_DIAGNOSIS_CHILD_ASTHMA_WHEEZE_SENSITIVITY_TOTAL"
+      ],
+      "gold_ready_criterion": "Canonical mortality gold carries SIH pediatric admissions in parallel to SIM mortality without redefining the mortality endpoints."
+    }
+  ]
+}

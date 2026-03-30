@@ -1,0 +1,101 @@
+column_name,data_type,required,description
+MUNICIPALITY_CODE,string,true,Resolved IBGE municipality code eligible for municipality-level analysis; UF-only unresolved placeholders ending in 0000 are excluded from analytical gold.
+DATE,date,true,Observation date in ISO format.
+YEAR,integer,true,Calendar year derived from DATE.
+MONTH,integer,true,Calendar month derived from DATE.
+NV_TOTAL,integer,true,Total live births.
+LIVE_BIRTHS_TOTAL,integer,true,Daily live births retained for stillbirth denominator arithmetic from canonical stillbirth silver.
+GEST_AGE_CANONICAL,float,true,Daily mean canonical gestational age in completed weeks aggregated from silver_sinasc_event.
+PRETERM_FLAG,integer,true,Daily count aggregated from event-level PRETERM_LT37_FLAG in canonical silver_sinasc_event.
+VERY_PRETERM_FLAG,integer,true,Daily count aggregated from event-level PRETERM_LT32_FLAG in canonical silver_sinasc_event.
+GEST_DAYS_LOST_BELOW_37W,float,true,Daily sum of event-level days lost below 37 completed weeks from canonical silver_sinasc_event.
+GEST_AGE_DERIVATION_NOTE,string,true,Documentation note for the daily gestational-age aggregation rule.
+GEST_DAYS_LOST_DERIVATION_NOTE,string,true,Documentation note for the daily gestational-days-lost aggregation rule.
+GEST_AGE_MISSING_FLAG,integer,true,Daily count of live births without valid canonical gestational age for analysis.
+NV_PRETERM_TOTAL,integer,true,Total preterm live births.
+NV_REGISTRO_UTIL_IG_TOTAL,integer,true,Birth records with usable gestational age.
+NV_REGISTRO_UTIL_DPGP_TOTAL,integer,true,Birth records with usable pregnancy-duration information.
+NV_DPGP_MEDIA_DIAS,float,true,Mean pregnancy duration in days.
+NV_IG_CORRIGIDA_MEDIA_SEMANAS,float,true,Mean corrected gestational age in weeks.
+BIRTH_WEIGHT_REPORTED_TOTAL,integer,true,Daily count of live births with a positive numeric birth weight recorded in canonical SINASC event data.
+LOW_BIRTH_WEIGHT_LT2500_TOTAL,integer,true,Daily count of live births weighing less than 2500 grams.
+PRETERM_LOW_BIRTH_WEIGHT_TOTAL,integer,true,Daily count of preterm live births weighing less than 2500 grams.
+PRENATAL_VISITS_COUNT,float,true,Daily mean exact prenatal-visit count among births with exact event-level counts.
+PRENATAL_VISITS_6PLUS_FLAG,integer,true,Daily count aggregated from event-level prenatal 6+ flags; retained temporarily for backward compatibility.
+PRENATAL_VISITS_8PLUS_FLAG,integer,true,Daily count aggregated from strict event-level prenatal 8+ flags using exact CONSPRENAT counts only.
+PRENATAL_VISITS_SOURCE,string,true,Daily summary of prenatal source lineage from canonical SINASC event records.
+PRENATAL_VISITS_RAW_VALUE,string,true,Daily summary token documenting that raw prenatal values were aggregated from event-level records.
+PRENATAL_VISITS_MISSING_FLAG,integer,true,Daily count of births missing prenatal-visit information.
+PRENATAL_VISITS_DERIVATION_NOTE,string,true,Documentation note for the daily prenatal aggregation rule.
+STILLBIRTH_PRIMARY_GTE28_FLAG,integer,true,Daily count aggregated from >=28-week stillbirth event flags.
+STILLBIRTH_SENS_GTE22_FLAG,integer,true,Daily count aggregated from >=22-week stillbirth sensitivity flags.
+STILLBIRTH_TOTAL_PRIMARY_GTE28,integer,true,Daily stillbirth total under the primary >=28-week definition.
+STILLBIRTH_TOTAL,integer,true,Stillbirths at the primary threshold.
+STILLBIRTH_TOTAL_GTE22_SENSITIVITY,integer,true,Stillbirths at the sensitivity threshold.
+TOTAL_BIRTHS_PRIMARY,integer,true,Daily total births under the primary stillbirth denominator definition.
+TOTAL_BIRTHS_SENSITIVITY_GTE22,integer,true,Daily total births under the sensitivity stillbirth denominator definition.
+OFFSET_LOG_TOTAL_BIRTHS_PRIMARY,float,true,Log offset for daily total births under the primary stillbirth definition.
+OFFSET_LOG_TOTAL_BIRTHS_SENSITIVITY_GTE22,float,true,Log offset for daily total births under the sensitivity stillbirth definition.
+NASCIMENTOS_TOTAIS_INCLUINDO_FETAIS,integer,true,Total births including fetal deaths under the primary definition.
+OFFSET_LOG_NASCIMENTOS_TOTAIS_INCLUINDO_FETAIS,float,true,Log offset for total births including fetal deaths.
+STILLBIRTH_RATE_PER_1000_TOTAL_BIRTHS_PRIMARY,float,false,Daily stillbirth rate per 1,000 total births under the primary definition.
+STILLBIRTH_RATE_PER_1000_TOTAL_BIRTHS_SENSITIVITY_GTE22,float,false,Daily stillbirth rate per 1,000 total births under the sensitivity definition.
+OBSTETRIC_ADMISSIONS_TOTAL,integer,true,All obstetric admissions.
+OBSTETRIC_URGENT_TOTAL,integer,true,Urgent obstetric admissions.
+OBSTETRIC_ICU_TOTAL,integer,true,ICU obstetric admissions.
+HDP_ANY_TOTAL,integer,true,Any hypertensive disorder of pregnancy.
+HDP_SEVERE_TOTAL,integer,true,Severe hypertensive disorders of pregnancy.
+HDP_GESTATIONAL_HTN_TOTAL,integer,true,Gestational hypertension admissions.
+HDP_PREECLAMPSIA_TOTAL,integer,true,Preeclampsia admissions.
+HDP_ECLAMPSIA_TOTAL,integer,true,Eclampsia admissions.
+PRETERM_LABOR_TOTAL,integer,true,Preterm labor admissions.
+PRETERM_LABOR_URGENT_TOTAL,integer,true,Urgent preterm labor admissions.
+PRETERM_LABOR_ICU_TOTAL,integer,true,ICU preterm labor admissions.
+PRETERM_LABOR_DEATH_TOTAL,integer,true,Deaths among preterm labor admissions.
+APH_ANTEPARTUM_TOTAL,integer,true,Antepartum haemorrhage admissions under the strict principal-diagnosis definition.
+APH_ANTEPARTUM_URGENT_TOTAL,integer,true,Urgent antepartum haemorrhage admissions.
+APH_ANTEPARTUM_ICU_TOTAL,integer,true,ICU antepartum haemorrhage admissions.
+APH_ANTEPARTUM_DEATH_TOTAL,integer,true,Deaths among antepartum haemorrhage admissions.
+GDM_GESTATIONAL_TOTAL,integer,true,Gestational diabetes admissions.
+GDM_GESTATIONAL_URGENT_TOTAL,integer,true,Urgent gestational diabetes admissions.
+GDM_GESTATIONAL_ICU_TOTAL,integer,true,ICU gestational diabetes admissions.
+GDM_GESTATIONAL_DEATH_TOTAL,integer,true,Deaths among gestational diabetes admissions.
+DIABETES_PREGNANCY_BROAD_TOTAL,integer,true,Broad pregnancy-diabetes sensitivity count.
+TMAX_C,float,false,Daily maximum temperature in Celsius.
+TMIN_C,float,false,Daily minimum temperature in Celsius.
+TMEAN_C,float,false,Daily mean temperature in Celsius.
+RH_MIN_PCT,float,false,Daily minimum relative humidity percentage.
+RH_MEAN_PCT,float,false,Daily mean relative humidity percentage.
+HEATWAVE_LEN_P95,float,false,Daily heatwave duration sensitivity exposure.
+HEAT_INDEX_APPROX_C,float,false,Composite heat-index sensitivity exposure from the final merged climate series.
+FONTE_CLIMA_FINAL,string,false,Resolved climate source.
+FONTE_TMAX_C_FINAL,string,false,Resolved TMAX source after mixed-source enrichment.
+FONTE_TMIN_C_FINAL,string,false,Resolved minimum-temperature source after mixed-source enrichment.
+FONTE_TMEAN_C_FINAL,string,false,Resolved mean-temperature source after mixed-source enrichment.
+FONTE_RH_MIN_PCT_FINAL,string,false,Resolved minimum-humidity source after mixed-source enrichment.
+FONTE_RH_MEAN_PCT_FINAL,string,false,Resolved humidity source after mixed-source enrichment.
+IMPUTADO_POR_FALLBACK,integer,false,Indicator that any climate field used fallback lineage.
+IMPUTADO_TMAX_C,integer,false,Indicator that TMAX_C was fallback-imputed.
+IMPUTADO_TMIN_C,integer,false,Indicator that TMIN_C was fallback-imputed.
+IMPUTADO_TMEAN_C,integer,false,Indicator that TMEAN_C was fallback-imputed.
+IMPUTADO_RH_MIN_PCT,integer,false,Indicator that RH_MIN_PCT was fallback-imputed.
+IMPUTADO_RH_MEAN_PCT,integer,false,Indicator that RH_MEAN_PCT was fallback-imputed.
+CLIMATE_UPSTREAM_QUARANTINE_FLAG,integer,false,Indicator that the climate lineage was protected from an invalid upstream INMET station and fell back to ERA5.
+CLIMATE_RECORD_ANOMALY_FLAG,integer,false,Indicator that the municipality-day preliminary climate tuple was nullified by the anomaly screen before imputation.
+CLIMATE_CORRECTION_PATH,string,false,Compact provenance label for the applied climate correction path.
+HEAT_INDEX_METHOD,string,false,Heat-index approximation method label.
+HEAT_INDEX_SOURCE_PAIR,string,false,Source pairing used for the heat-index approximation.
+HEAT_INDEX_INPUTS_ZERO_MISSING,integer,false,Indicator that the heat-index inputs were fully observed on the row.
+SOURCE_SINASC,string,true,Canonical SINASC provenance marker.
+SOURCE_STILLBIRTH,string,true,Canonical stillbirth provenance marker.
+SOURCE_SIH,string,true,Canonical SIH provenance marker.
+QC_STATUS,string,true,Quality-control status.
+DENOMINATOR_ZERO_FLAG,integer,false,Row-level stillbirth denominator equals zero.
+DENOMINATOR_MISSING_FLAG,integer,false,Row-level stillbirth denominator is missing.
+RATE_NOT_COMPUTABLE_FLAG,integer,false,Row-level stillbirth rate cannot be computed from the annual denominator.
+OFFSET_VALID_FLAG,integer,false,Row-level stillbirth offset is valid and positive.
+STILLBIRTH_DENOMINATOR_ZERO_FLAG,integer,false,Primary stillbirth denominator equals zero.
+STILLBIRTH_DENOMINATOR_MISSING_FLAG,integer,false,Primary stillbirth denominator is missing.
+STILLBIRTH_RATE_NOT_COMPUTABLE_FLAG,integer,false,Primary stillbirth rate is not computable on the row.
+STILLBIRTH_OFFSET_VALID_FLAG,integer,false,Primary stillbirth offset is valid and positive.
+STILLBIRTH_RATE_PER_1000_TOTAL_BIRTHS,float,false,Backward-compatible primary stillbirth rate per 1,000 total births.

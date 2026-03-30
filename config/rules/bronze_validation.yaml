@@ -1,0 +1,40 @@
+{
+  "datasets": {
+    "sim": {
+      "required_fields": ["DTOBITO", "CODMUNOCOR", "CODMUNRES"]
+    },
+    "sinasc": {
+      "required_fields": ["DTNASC", "CODMUNNASC", "CODMUNRES"]
+    },
+    "sih": {
+      "required_fields": ["ANO_CMPT", "MES_CMPT", "MUNIC_RES"]
+    },
+    "stillbirth": {
+      "required_fields": ["DTOBITO", "CODMUNOCOR", "CODMUNRES"]
+    },
+    "inmet": {
+      "required_fields": ["DATA", "HORA_UTC", "CODIGO_WMO"]
+    },
+    "era5_land": {
+      "required_fields": ["DATE", "COD_MUNICIPIO", "TMAX_C", "RH_MEAN_PCT"]
+    },
+    "ibge_total": {
+      "required_fields": ["UF", "COD_UF", "COD_MUNIC", "POPULACAO_ESTIMADA"]
+    },
+    "ibge_sidra": {
+      "required_fields": ["D1C", "D2C", "D3C", "D4C", "D5C", "V"]
+    },
+    "datasus_popsvs": {
+      "required_fields": ["COD_MUN", "ANO", "SEXO", "IDADE", "POP"]
+    },
+    "pop_under5": {
+      "required_fields": ["COD_MUNICIPIO", "ANO", "POP_UNDER5"]
+    },
+    "pop_wra": {
+      "required_fields": ["COD_MUNICIPIO", "ANO", "POP_WRA"]
+    },
+    "ibge": {
+      "required_fields": []
+    }
+  }
+}

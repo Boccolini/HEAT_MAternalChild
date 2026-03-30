@@ -1,0 +1,17 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useQuery } from "@tanstack/react-query";
+import { getMunicipalityProfile } from "../lib/api";
+function ProfileSection({ title, rows }) {
+    return (_jsxs("section", { className: "space-y-2", children: [_jsx("h3", { className: "text-sm font-semibold uppercase tracking-wide text-slate-500", children: title }), _jsx("div", { className: "space-y-2", children: rows.slice(0, 8).map((row) => (_jsxs("div", { className: "rounded-xl border border-rule p-3 text-sm", children: [_jsx("div", { className: "font-medium", children: row.metric_id }), _jsxs("div", { className: "text-slate-500", children: ["Year ", row.year] }), _jsxs("div", { className: "mt-1", children: ["Value ", row.value_rate ?? row.value_count ?? "NA"] })] }, `${row.metric_id}-${row.year}`))) })] }));
+}
+export function MunicipalityProfileDrawer({ municipalityCode, onClose }) {
+    const { data, isLoading } = useQuery({
+        queryKey: ["municipality-profile", municipalityCode],
+        queryFn: () => getMunicipalityProfile(municipalityCode ?? ""),
+        enabled: Boolean(municipalityCode)
+    });
+    if (!municipalityCode) {
+        return null;
+    }
+    return (_jsx("div", { className: "fixed inset-0 z-50 flex justify-end bg-black/20", children: _jsxs("div", { className: "h-full w-full max-w-2xl overflow-auto bg-white p-6 shadow-2xl", children: [_jsxs("div", { className: "mb-6 flex items-start justify-between", children: [_jsxs("div", { children: [_jsx("h2", { className: "text-xl font-semibold", children: data?.label ?? "Municipality profile" }), _jsxs("p", { className: "text-sm text-slate-500", children: [data?.uf ?? "", " ", municipalityCode] })] }), _jsx("button", { type: "button", className: "rounded-full border border-rule px-3 py-1 text-sm", onClick: onClose, children: "Close" })] }), isLoading && _jsx("p", { className: "text-sm text-slate-500", children: "Loading municipality profile..." }), data && (_jsxs("div", { className: "space-y-6", children: [_jsxs("section", { className: "rounded-2xl border border-rule p-4", children: [_jsx("h3", { className: "text-sm font-semibold uppercase tracking-wide text-slate-500", children: "Context" }), _jsx("div", { className: "mt-3 overflow-auto", children: _jsxs("table", { className: "w-full text-sm", children: [_jsx("thead", { children: _jsxs("tr", { className: "text-left text-slate-500", children: [_jsx("th", { children: "Year" }), _jsx("th", { children: "IDH" }), _jsx("th", { children: "Gini" }), _jsx("th", { children: "Urban" }), _jsx("th", { children: "Altitude" })] }) }), _jsx("tbody", { children: data.context.years.map((row) => (_jsxs("tr", { className: "border-t border-rule", children: [_jsx("td", { className: "py-2", children: String(row.year) }), _jsx("td", { className: "py-2", children: Number(row.IDH_EXPANDED ?? 0).toFixed(3) }), _jsx("td", { className: "py-2", children: Number(row.GINI_EXPANDED ?? 0).toFixed(3) }), _jsx("td", { className: "py-2", children: Number(row.PROP_URBAN ?? 0).toFixed(2) }), _jsx("td", { className: "py-2", children: Number(row.ALTITUDE_MEAN_M ?? 0).toFixed(0) })] }, String(row.year)))) })] }) })] }), _jsx(ProfileSection, { title: "Overview", rows: data.overview }), _jsx(ProfileSection, { title: "Perinatal", rows: data.perinatal }), _jsx(ProfileSection, { title: "Child mortality", rows: data.mortality }), _jsx(ProfileSection, { title: "Maternal", rows: data.maternal }), _jsx(ProfileSection, { title: "Climate", rows: data.climate })] }))] }) }));
+}

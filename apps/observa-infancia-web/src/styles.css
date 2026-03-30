@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-navy: #12324a;
+  --color-blue: #365c72;
+  --color-canvas: #f7f7f4;
+  --color-rule: #d8dee3;
+  --color-heat: #c76a1b;
+  --color-humidity: #3e7c78;
+  --color-caution: #8e2c2c;
+}
+
+body {
+  color: var(--color-navy);
+  font-feature-settings: "tnum" 1;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.panel {
+  @apply rounded-2xl border border-rule bg-white shadow-panel;
+}
+
+.panel-header {
+  @apply flex items-center justify-between border-b border-rule px-5 py-4;
+}
+
+.panel-body {
+  @apply px-5 py-4;
+}

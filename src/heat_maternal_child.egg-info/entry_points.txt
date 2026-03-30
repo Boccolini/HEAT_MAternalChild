@@ -1,0 +1,2 @@
+[console_scripts]
+heat-mnch = heat_mnch.cli:main

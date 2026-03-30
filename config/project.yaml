@@ -1,0 +1,70 @@
+{
+  "project": {
+    "name": "HEAT Maternal Child",
+    "code": "heat_mnch",
+    "language": "en",
+    "series_start_year": 2020,
+    "series_end_year": 2024,
+    "repository_root": ".",
+    "runtime_root": "/tmp/heat_maternal_child_runtime",
+    "artifacts_dir": "artifacts",
+    "manifests_dir": "artifacts/manifests",
+    "run_logs_dir": "artifacts/run_logs",
+    "status_dir": "artifacts/status"
+  },
+  "data_layers": {
+    "raw": "data/raw",
+    "bronze": "data/bronze",
+    "silver": "data/silver",
+    "gold": "data/gold"
+  },
+  "critical_paths": {
+    "contracts": [
+      "schemas/gold_mnch_panel_diario_municipio.schema.csv",
+      "schemas/gold_mnch_mortality_diario_municipio.schema.csv",
+      "schemas/gold_mnch_perinatal_diario_municipio.schema.csv"
+    ],
+    "rules": [
+      "config/rules/source_to_gold_map.yaml",
+      "config/rules/outcomes.yaml",
+      "config/rules/variable_classes.yaml"
+    ]
+  },
+  "runtime_guardrails": {
+    "documents_path_warn": true,
+    "managed_storage_markers": [
+      "iCloud Drive",
+      "Mobile Documents",
+      "Dropbox",
+      "Google Drive",
+      "OneDrive",
+      "Box"
+    ]
+  },
+  "datasets": {
+    "climate": {
+      "raw_sources": ["inmet", "era5_land"],
+      "gold_targets": ["gold_mnch_panel", "gold_mnch_mortality", "gold_mnch_perinatal"]
+    },
+    "sinasc": {
+      "raw_sources": ["datasus_sinasc"],
+      "gold_targets": ["gold_mnch_perinatal", "gold_mnch_mortality"]
+    },
+    "sim": {
+      "raw_sources": ["datasus_sim"],
+      "gold_targets": ["gold_mnch_mortality", "gold_mnch_panel"]
+    },
+    "sih": {
+      "raw_sources": ["datasus_sih"],
+      "gold_targets": ["gold_mnch_perinatal", "gold_mnch_mortality", "gold_mnch_panel"]
+    },
+    "stillbirth": {
+      "raw_sources": ["datasus_dofet"],
+      "gold_targets": ["gold_mnch_perinatal"]
+    },
+    "population": {
+      "raw_sources": ["ibge_under5", "ibge_women_fertile"],
+      "gold_targets": ["gold_mnch_perinatal", "gold_mnch_mortality", "gold_mnch_panel"]
+    }
+  }
+}

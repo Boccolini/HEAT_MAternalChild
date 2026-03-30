@@ -1,0 +1,15 @@
+{
+  "variable_classes": [
+    "identifiers_and_keys",
+    "calendar_and_geography",
+    "primary_exposures",
+    "humidity_and_co_exposures",
+    "lineage_and_provenance",
+    "primary_outcomes",
+    "secondary_or_sensitivity_outcomes",
+    "denominators_and_offsets",
+    "phenotype_flags",
+    "quality_control_variables",
+    "legacy_fields"
+  ]
+}

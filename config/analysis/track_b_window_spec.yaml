@@ -1,0 +1,13 @@
+{
+  "window_spec": {
+    "fixed_windows_days": {
+      "days_0_6_before_event": 7,
+      "days_0_13_before_event": 14,
+      "days_0_27_before_event": 28
+    },
+    "third_trimester_minimum_days": 1,
+    "whole_pregnancy_minimum_days": 1,
+    "climate_start_date": "2020-01-01",
+    "week_of_gestation_max_weeks": 40
+  }
+}

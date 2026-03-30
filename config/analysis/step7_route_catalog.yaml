@@ -1,0 +1,179 @@
+{
+  "analysis_units": [
+    {
+      "analysis_unit_id": "preterm_birth_count",
+      "step7_route_class": "event_level_escalated",
+      "step7_route_reason": "event_level_birth_timing_gain_plausible",
+      "priority_escalation_flag": true
+    },
+    {
+      "analysis_unit_id": "very_preterm_birth_count",
+      "step7_route_class": "event_level_escalated",
+      "step7_route_reason": "event_level_birth_timing_gain_plausible",
+      "priority_escalation_flag": false
+    },
+    {
+      "analysis_unit_id": "low_birth_weight_lt2500_count",
+      "step7_route_class": "event_level_escalated",
+      "step7_route_reason": "event_level_birth_timing_gain_plausible",
+      "priority_escalation_flag": false
+    },
+    {
+      "analysis_unit_id": "gestational_days_lost_below_37_weeks",
+      "step7_route_class": "event_level_escalated",
+      "step7_route_reason": "event_level_birth_timing_gain_plausible",
+      "priority_escalation_flag": false
+    },
+    {
+      "analysis_unit_id": "stillbirth_primary_gte28_count",
+      "step7_route_class": "event_level_escalated",
+      "step7_route_reason": "event_level_stillbirth_timing_gain_plausible",
+      "priority_escalation_flag": true
+    },
+    {
+      "analysis_unit_id": "stillbirth_sensitivity_gte22_count",
+      "step7_route_class": "event_level_escalated",
+      "step7_route_reason": "event_level_stillbirth_timing_gain_plausible",
+      "priority_escalation_flag": false
+    },
+    {
+      "analysis_unit_id": "neonatal_death_count",
+      "step7_route_class": "event_level_escalated",
+      "step7_route_reason": "grouped_daily_neonatal_refinement_required",
+      "priority_escalation_flag": true
+    },
+    {
+      "analysis_unit_id": "child_dehydration_admission_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "child_diarrhea_gi_admission_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "child_acute_respiratory_admission_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "child_asthma_wheeze_admission_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "child_direct_heat_hospitalization_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "child_indirect_heat_hospitalization_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "under_five_death_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "infant_death_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "postneonatal_death_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "child_death_age_one_to_four_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "child_under_five_death_total_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "child_direct_heat_underlying_death_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "child_indirect_heat_underlying_death_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "child_direct_heat_any_mention_death_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "child_indirect_heat_any_mention_death_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "prenatal_eight_plus_visit_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "preterm_low_birth_weight_count",
+      "step7_route_class": "aggregated_inherited",
+      "step7_route_reason": "aggregated_current_cycle_stack_sufficient"
+    },
+    {
+      "analysis_unit_id": "antepartum_haemorrhage_admission_count",
+      "step7_route_class": "relative_only_inherited",
+      "step7_route_reason": "relative_only_after_non_harmful_step6_direction",
+      "public_use_override": "relative_only",
+      "absolute_burden_allowed_override": false,
+      "headline_group_allowed_override": false
+    },
+    {
+      "analysis_unit_id": "gestational_diabetes_admission_count",
+      "step7_route_class": "relative_only_inherited",
+      "step7_route_reason": "relative_only_after_non_harmful_step6_direction",
+      "public_use_override": "relative_only",
+      "absolute_burden_allowed_override": false,
+      "headline_group_allowed_override": false
+    },
+    {
+      "analysis_unit_id": "hypertensive_disorder_of_pregnancy_count",
+      "step7_route_class": "relative_only_inherited",
+      "step7_route_reason": "relative_only_after_non_harmful_step6_direction",
+      "public_use_override": "relative_only",
+      "absolute_burden_allowed_override": false,
+      "headline_group_allowed_override": false
+    },
+    {
+      "analysis_unit_id": "obstetric_admission_count",
+      "step7_route_class": "relative_only_inherited",
+      "step7_route_reason": "relative_only_after_non_harmful_step6_direction",
+      "public_use_override": "relative_only",
+      "absolute_burden_allowed_override": false,
+      "headline_group_allowed_override": false
+    },
+    {
+      "analysis_unit_id": "preterm_labor_admission_count",
+      "step7_route_class": "relative_only_inherited",
+      "step7_route_reason": "relative_only_after_non_harmful_step6_direction",
+      "public_use_override": "relative_only",
+      "absolute_burden_allowed_override": false,
+      "headline_group_allowed_override": false
+    },
+    {
+      "analysis_unit_id": "severe_hypertensive_disorder_of_pregnancy_count",
+      "step7_route_class": "relative_only_inherited",
+      "step7_route_reason": "relative_only_after_non_harmful_step6_direction",
+      "public_use_override": "relative_only",
+      "absolute_burden_allowed_override": false,
+      "headline_group_allowed_override": false
+    }
+  ]
+}
