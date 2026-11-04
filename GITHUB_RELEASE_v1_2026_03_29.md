@@ -19,7 +19,7 @@ Boccolini, CS. *Brazil's heat exposure on maternal, newborn, and child health - 
 
 ## Repository
 
-- GitHub repository: https://github.com/digicodeagent-ai/HEAT_MAternalChild
+- GitHub repository: https://github.com/Boccolini/HEAT_MAternalChild
 - Frozen dashboard baseline date: 2026-03-29
 - Commit at release preparation: 7a1d321
 - Version-specific DOI: https://doi.org/10.5281/zenodo.19325763
